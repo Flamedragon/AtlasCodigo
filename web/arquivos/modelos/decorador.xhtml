@@ -127,7 +127,7 @@
                     <h:outputLabel for="Ctipo" value="Tipo: "/>
                     <p:selectOneRadio id="Ctipo" value="#{manterUsuario.perfilEscolhido}">
                         <f:selectItems value="#{manterUsuario.perfis}"/>
-                        <p:ajax update="Censino" event="click"/>
+                        <p:ajax update="Censino" event="change"/>
                     </p:selectOneRadio>
                     
                     <h:outputLabel for="Cdata" value="Data de Nascimento: "/>
@@ -135,14 +135,15 @@
                     
                     
                     
-                    
+              
                    <!-- <c:if test="#{manterUsuario.perfilEscolhido.toString().equals('Professor usuário')}" id="ensinoIf" > -->
                     <h:outputLabel for="Censino" value="Leciona em: "/>
                     <p:selectOneMenu  id="Censino" value="#{manterUsuario.ensinoEscolhido}" disabled="#{!(manterUsuario.perfilEscolhido.toString().equals('Professor usuário')) }">
+                        
                         <f:selectItems value="#{manterUsuario.ensinos}"/>
                     </p:selectOneMenu>
                     <!--</c:if>-->
-                    
+            
                     <h:outputLabel for="Cescola" value="Grau de Escolaridade: "/>
                     <p:selectOneMenu  id="Cescola" value="#{manterUsuario.escolariodadeEscolhida}" >
                         <f:selectItems value="#{manterUsuario.escolaridades}"/>
