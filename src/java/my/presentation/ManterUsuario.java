@@ -81,6 +81,7 @@ public class ManterUsuario extends CRUDView<Usuario, Long> {
 
     public void setPerfilEscolhido(Perfil perfilEscolhido) {
         this.perfilEscolhido = perfilEscolhido;
+        getEntidade().setPerfil(perfilEscolhido);
     }
 
     
@@ -91,6 +92,7 @@ public class ManterUsuario extends CRUDView<Usuario, Long> {
 
     public void setSexoEscolhido(Sexo sexoEscolhido) {
         this.sexoEscolhido = sexoEscolhido;
+        getEntidade().setSexo(sexoEscolhido);
     }
 
     public Ensino getEnsinoEscolhido() {
@@ -99,6 +101,7 @@ public class ManterUsuario extends CRUDView<Usuario, Long> {
 
     public void setEnsinoEscolhido(Ensino ensinoEscolhido) {
         this.ensinoEscolhido = ensinoEscolhido;
+        getEntidade().setEnsino(ensinoEscolhido);
     }
 
     public Escolaridade getEscolariodadeEscolhida() {
@@ -107,6 +110,7 @@ public class ManterUsuario extends CRUDView<Usuario, Long> {
 
     public void setEscolariodadeEscolhida(Escolaridade escolariodadeEscolhida) {
         this.escolariodadeEscolhida = escolariodadeEscolhida;
+        getEntidade().setEscolaridade(escolariodadeEscolhida);
     }
 
     public Cidade getCidadeEscolhida() {
@@ -115,6 +119,8 @@ public class ManterUsuario extends CRUDView<Usuario, Long> {
 
     public void setCidadeEscolhida(Cidade cidadeEscolhida) {
         this.cidadeEscolhida = cidadeEscolhida;
+        getEntidade().setCidade(cidadeEscolhida);
+        
     }
     
     

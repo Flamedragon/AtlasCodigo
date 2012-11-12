@@ -108,6 +108,24 @@ public class ManterExercicio extends CRUDView<Exercicio, Long>{
         this.grauEscolhido = grauEscolhido;
         getEntidade().setGrau(grauEscolhido);
     }
+    
+     public Elemento getElementoEscolhido() {
+        return elementoEscolhido;
+    }
+
+    public void setElementoEscolhido(Elemento elementoEscolhido) {
+        this.elementoEscolhido = elementoEscolhido;
+        getEntidade().setElemento(elementoEscolhido);
+    }
+
+    public TipoExercicio getTipoEscolhido() {
+        return tipoEscolhido;
+    }
+
+    public void setTipoEscolhido(TipoExercicio tipoEscolhido) {
+        this.tipoEscolhido = tipoEscolhido;
+        getEntidade().setTipo(tipoEscolhido);
+    }
 
     public Integer getRespostaEscolhida() {
         return respostaEscolhida;
@@ -200,22 +218,7 @@ return items;
     
     
     
-    public Elemento getElementoEscolhido() {
-        return elementoEscolhido;
-    }
-
-    public void setElementoEscolhido(Elemento elementoEscolhido) {
-        this.elementoEscolhido = elementoEscolhido;
-        getEntidade().setElemento(elementoEscolhido);
-    }
-
-    public TipoExercicio getTipoEscolhido() {
-        return tipoEscolhido;
-    }
-
-    public void setTipoEscolhido(TipoExercicio tipoEscolhido) {
-        this.tipoEscolhido = tipoEscolhido;
-    }
+   
 /*
     public List<SelectItem> getVisoes() {
         return visoes;

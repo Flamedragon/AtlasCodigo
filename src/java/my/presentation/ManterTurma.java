@@ -90,6 +90,7 @@ return items;
 
     public void setNivelEscolhido(NivelGrupo nivelEscolhido) {
         this.nivelEscolhido = nivelEscolhido;
+        getEntidade().setNivel(nivelEscolhido);
     }
 
     public Ano_Serie getAnoEscolhido() {
@@ -98,6 +99,7 @@ return items;
 
     public void setAnoEscolhido(Ano_Serie anoEscolhido) {
         this.anoEscolhido = anoEscolhido;
+        getEntidade().setAno_serie(anoEscolhido);
     }
    
     

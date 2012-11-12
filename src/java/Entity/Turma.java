@@ -4,6 +4,7 @@
  */
 package Entity;
 
+import Entity.enumeracoes.Ano_Serie;
 import Entity.enumeracoes.NivelGrupo;
 import java.io.Serializable;
 import java.util.Date;
@@ -32,7 +33,7 @@ public class Turma implements Serializable {
     @GeneratedValue(strategy = GenerationType.TABLE,generator="tabela_Turma")
     private Integer id;
     
-    private byte ano_serie;
+    private Ano_Serie ano_serie;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtInicial;
@@ -69,13 +70,15 @@ public class Turma implements Serializable {
         return hash;
     }
 
-    public byte getAno_serie() {
+    public Ano_Serie getAno_serie() {
         return ano_serie;
     }
 
-    public void setAno_serie(byte ano_serie) {
+    public void setAno_serie(Ano_Serie ano_serie) {
         this.ano_serie = ano_serie;
     }
+
+   
 
     public List<Avaliacao> getAvaliacoes() {
         return avaliacoes;
