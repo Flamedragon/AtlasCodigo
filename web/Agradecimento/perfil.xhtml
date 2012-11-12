@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Avaliacao :: #{manterAvaliacao.entidade.turma.ano_serie}º ano - #{manterAvaliacao.entidade.turma.nivel} - De:
+         #{manterAvaliacao.entidade.dtInicial} Até: #{manterAvaliacao.entidade.dtFinal}
+    </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:viewParam name="codigo" value="#{manterAvaliacao.entidade.id}" />
+                <f:event type="preRenderView" listener="#{manterAvaliacao.preRender(manterAvaliacao.entidade.id)}"/>
+            </f:metadata>
+            <h:form>
+                <p:contextMenu rendered="#{sessao.admin || sessao.monitor}">
+                    <p:menuitem value="Publicar" action="#{manterAvaliacao.publicar}" rendered="#{sessao.admin and (manterAvaliacao.entidade.situacao.pendente || manterAvaliacao.entidade.situacao.edicao)}"/>
+                    <p:menuitem value="Enviar" action="#{manterAvaliacao.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterAvaliacao.entidade.situacao.edicao}"/>
+                    <p:menuitem value="Editar" onclick="cadastroAvaliacao.show()"  update=":Hnome,:Hdescricao"/>
+                    <p:menuitem value="Excluir" action="#{manterAvaliacao.remove}"/>
+                </p:contextMenu>
+            </h:form>
+            <h1 align="center" id="Hnome"><h:outputText value="#{manterAvaliacao.entidade.turma.ano_serie}º ano - #{manterAvaliacao.entidade.turma.nivel} - De:
+         #{manterAvaliacao.entidade.dtInicial} Até: #{manterAvaliacao.entidade.dtFinal}"/></h1>
+            <h:panelGroup id="Hdescricao" layout="block" styleClass="campo">
+                <b><h:outputText styleClass="titulo" value="Descrição: "/></b><br/>
+                
+            </h:panelGroup>
+        </f:view>
+        <ui:include src="/modals/cadastroAvaliacao.xhtml"/>
+    </ui:define>
+    
+    
+    <ui:insert name="modals">
+    </ui:insert>
+</ui:composition>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog modal="true" header="Cadastrar turma" widgetVar="cadastroTurma" resizable="false" minWidth="600">
+        <h:form>
+            <ui:decorate template="/arquivos/modelos/form.xhtml">
+               
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="dtInicial">Data Inicial: </ui:define>
+                    <p:calendar value="#{manterTurma.entidade.dtInicial}" required="true" requiredMessage="Campo obrigatório." />  
+                    
+                </ui:decorate>
+                
+                 <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="dtFinal">Data Final: </ui:define>
+                    <p:calendar value="#{manterTurma.entidade.dtFinal}" required="true" requiredMessage="Campo obrigatório." />  
+                </ui:decorate>
+
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="dtFinal">Data Final: </ui:define>
+                    <p:selectOneRadio value="#{manterTurma.nivelEscolhido}">
+                        <f:selectItems value="#{manterTurma.niveis}"/>
+                    </p:selectOneRadio>  
+                </ui:decorate>
+
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="dtFinal">Data Final: </ui:define>
+                    <p:selectOneMenu  id="ano" value="#{manterTurma.anoEscolhido}" >
+                        <f:selectItems value="#{manterTurma.seriesFundamental}"/>
+                    </p:selectOneMenu>
+                </ui:decorate>
+
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="dtFinal">Data Final: </ui:define>
+                    <p:selectOneMenu  id="ano" value="#{manterTurma.anoEscolhido}" >
+                        <f:selectItems value="#{manterTurma.seriesMedio}"/>
+                    </p:selectOneMenu>
+                </ui:decorate>
+
+                
+                
+                
+                <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                    <p:commandButton action="#{manterTurma.salva()}" value="Salvar" onsuccess="cadastroAvaliacao.hide()"/>
+                    <p:commandButton onclick="cadastroTurma.hide()" value="Cancelar" immediate="true"/>
+                </ui:decorate>
+            </ui:decorate>
+        </h:form>
+    </p:dialog>
+</ui:composition>

@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Especie :: #{perfilEspecieView.entidade.genero} </ui:define>
+    <ui:define name="conteudo">
+        <f:view id="perfil">
+            <f:metadata>
+                <f:viewParam name="codigo" value="#{perfilEspecieView.especie}" />
+                <f:event type="preRenderView" listener="#{perfilEspecieView.preRendered}"/>
+                <f:event type="preRenderView" listener="#{especieView.preRender(perfilEspecieView.especie)}"/>
+               
+            </f:metadata>
+            <h:form id="formMenuEspecie">
+                <p:contextMenu rendered="#{sessao.admin || sessao.monitor}">
+                    <p:menuitem value="Publicar espécie" action="#{especieView.publicar(perfilEspecieView.especie)}" rendered="#{sessao.admin and (perfilEspecieView.entidade.situacao.pendente || perfilEspecieView.entidade.situacao.edicao)}"/>
+                    <p:menuitem value="Solicitar Publicação" action="#{especieView.envia(perfilEspecieView.especie)}" rendered="#{(sessao.admin or sessao.monitor) and perfilEspecieView.entidade.situacao.edicao}"/>
+                    <p:menuitem value="Editar espécie" onclick="editaEspecie.show()"/>
+                    <p:menuitem value="Excluir espécie" action="#{especieView.remove(perfilEspecieView.especie)}"/>
+                    <p:menuitem value="Adicionar Detalhe" onclick="cadastroDetalhe.show()" update=":perfilDir,:formGaleria:galeria"/>
+                    <p:menuitem value="Adicionar Estado" onclick="cadastroEstado.show()" update=":perfilEsq"/>
+                    <p:menuitem value="Adicionar Nome Popular" onclick="cadastroNome.show()" update=":perfilEsq"/>
+                    <p:menuitem value="Adicionar Importância Econômica" onclick="cadastroImportancia.show()" update=":perfilEsq"/>
+                    <p:menuitem value="Adicionar Hábito" onclick="cadastroHabitoEspecie.show()" update=":perfilDir,:formGaleria:galeria"/>
+                    <p:menuitem value="Vincular Habitat" onclick="adicionarHabitat.show()" update=":perfilEsq"/>
+                    <p:menuitem value="Teste" update=":formGaleria:galeria"/>
+                  
+                    
+                    
+                </p:contextMenu>
+                
+                
+            </h:form>
+            
+            
+            
+            <h1 align="center" id="Enome">
+                <i> <h:outputText value="#{perfilEspecieView.entidade.genero} &nbsp;" rendered="#{perfilEspecieView.entidade.genero!=null}"/>
+                <h:outputText value="#{perfilEspecieView.entidade.epiteto} &nbsp;" rendered="#{perfilEspecieView.entidade.epiteto!=null}"/>
+                <h:outputText value="#{perfilEspecieView.entidade.subEspecie} &nbsp;" rendered="#{perfilEspecieView.entidade.subEspecie!=null}"/>
+                <h:outputText value="#{perfilEspecieView.entidade.variedade} &nbsp;" rendered="#{perfilEspecieView.entidade.variedade!=null}"/>
+                <h:outputText value="#{perfilEspecieView.entidade.subVariedade}"  rendered="#{perfilEspecieView.entidade.subVariedade!=null}"/></i>
+            </h1><br/>
+            
+            <h:form id="formGaleria">
+            <center>
+                
+                <p:galleria id="galeria"  value="#{perfilEspecieView.imagens}" filmstripPosition="top" showCaptions="true" frameHeight="80" frameWidth="120" panelHeight="600" panelWidth="800" showOverlays="true" var="img" transitionInterval="1000000" >
+                    <p:graphicImage value="/arquivos/fotos/#{img}" />
+               
+                     
+                
+                </p:galleria> 
+            </center>
+            </h:form>
+            
+            
+                <h:panelGroup id="Fdescricao" layout="block" styleClass="campo">
+                    <b><h:outputText styleClass="titulo" value="Descrição: "/></b><br/>
+                    <p:spacer width="30" height="2"/> <h:outputText value="#{perfilEspecieView.entidade.descricao}"/>
+                </h:panelGroup>
+            
+            <h:panelGroup >
+                <h:panelGroup layout="block" styleClass="texto" id="perfilEsq">
+                    <ui:include src="infoEsq.xhtml"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="texto" id="perfilDir">
+                    <ui:include src="infoDir.xhtml"/>
+                </h:panelGroup>
+                
+                
+                
+                
+                
+            </h:panelGroup>
+        </f:view>
+    </ui:define>
+    <ui:define name="modals">
+        <ui:include src="/modals/cadastroNome.xhtml"/>
+        <ui:include src="/modals/cadastroDetalhe.xhtml"/>
+        <ui:include src="/modals/cadastroHabitoEspecie.xhtml"/>
+        <ui:include src="/modals/editaHabitoEspecie.xhtml"/>
+        <ui:include src="/modals/adicionarHabitat.xhtml"/>
+        <ui:include src="/modals/cadastroImportancia.xhtml"/>
+        <ui:include src="/modals/cadastroEstado.xhtml"/>
+        <ui:include src="/modals/cadastroEspecie.xhtml"/>
+        <ui:include src="/modals/editaEspecie.xhtml"/>
+        
+    </ui:define>
+</ui:composition>

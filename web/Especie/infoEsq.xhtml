@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    
+    
+    <h:panelGroup layout="block" styleClass="campo" id="Autor">
+        <b><h:outputText styleClass="titulo" value="Autor: "/><br/></b>
+        <p:spacer width="30" height="2"/> 
+        <h:outputText value="#{perfilEspecieView.entidade.autor}"/>        
+    </h:panelGroup>
+    
+    <h:panelGroup layout="block" styleClass="campo" id="NomesPopulares">
+        <b><h:outputText styleClass="titulo" value="Nomes Populares: "/><br/></b>
+        <ul><h:form id="formInfoEsq1">
+                <h:dataTable value="#{perfilEspecieView.entidade.apelidos}" var="apelido">
+                <li>
+                
+                <h:column>
+                        
+                        
+                    <h:outputText value="#{apelido.descricao}"/>
+                        
+                    </h:column>     
+               <!-- <h:column>
+                    <p:inplace editor="true"  toggleable="true">
+                        
+                        <p:inputText required="true"  value="#{importancia.descricao}" label="descricao"/>
+                        <p:ajax event="save" listener="#{manterImportanciaEconomica.salva()}" />
+                    </p:inplace>
+                </h:column>-->
+               <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterNomePopular.busca(apelido.id)}" oncomplete="cadastroNome.show()"  >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterNomePopular.remove(apelido.id)}" update=":formInfoEsq1">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        
+                    </h:column>
+               
+                </li>
+            </h:dataTable>
+            </h:form>
+        </ul>
+    </h:panelGroup>
+
+    
+    
+    <h:panelGroup layout="block" styleClass="campo" id="Tipo">
+        
+        <b><h:outputText styleClass="titulo" value="Voucher: "/><br/></b>
+        
+        
+        
+        <h:outputText style="max-width: 200px"  value="#{perfilEspecieView.entidade.tipoHerbarioASE}"/>
+        
+    
+    </h:panelGroup>
+    
+    <h:panelGroup layout="block" styleClass="campo" id="caracteristicas">
+        <b><h:outputText styleClass="titulo" value="Características ecológicas: "/></b><br/>
+        <p:spacer width="30" height="2"/> 
+           
+        <h:outputText value="#{perfilEspecieView.entidade.caracteristicaEcologica}"/><br/>
+    </h:panelGroup>
+
+    <!--
+    <h:panelGroup layout="block" styleClass="campo" id="Habitat">
+        <b><h:outputLabel for="habi" value="Habitat(s): "/></b>
+        <ul>
+        <p:lightBox height="600">
+            <ui:repeat value="#{perfilEspecieView.entidade.habitats}" var="habitat">
+                <h:link id="habi" outcome="../Habitat/perfil.xhtml" title="Clique para ir para o Habitat desta espécie">
+                    <h:outputText value="#{habitat.nome}"/>
+                    <f:param name="codigo" value="#{habitat.id}"/>
+                </h:link>
+            </ui:repeat>
+        </p:lightBox>
+        </ul>    
+    </h:panelGroup>
+    
+    -->
+    <h:form id="formInfEsq2">
+    <h:panelGroup layout="block" styleClass="campo" id="Habitat">
+        <h:dataTable value="#{perfilEspecieView.entidade.habitats}" var="habitat">
+                    <h:column>
+                        <f:facet name="header">Habitats: </f:facet>
+                    <h:link id="habi" outcome="../Habitat/perfil.xhtml" title="Clique para ir para o Habitat desta espécie">
+                        <h:outputText value="#{habitat.nome}"/>
+                        <f:param name="codigo" value="#{habitat.id}"/>
+                    </h:link>
+                    </h:column> 
+                    <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{especieView.removeHabitat(perfilEspecieView.entidade.habitats.indexOf(habitat))}" update=":formInfEsq2:Habitat">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        
+                    </h:column>
+    </h:dataTable>
+    </h:panelGroup>
+    </h:form>
+    <h:form id="formInfEsq3">    
+    <h:panelGroup layout="block" styleClass="campo" id="estados">
+        <b><h:outputText styleClass="titulo" value="Estado(s) de Conservação: "/><br/></b>
+        <ul>
+            <h:dataTable  value="#{perfilEspecieView.entidade.estadoDeConservacaos}" var="estados">
+                <li>
+                <h:column>
+                    <h:outputText value="#{estados.tipo.toString()}"/>
+                </h:column>
+                <h:column>
+                    <h:outputText value="#{estados.dtPublicacao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                </h:column>
+                 
+                <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterEstadoDeConservacao.busca(estados.id)}" oncomplete="cadastroEstado.show()" >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterEstadoDeConservacao.remove(estados.id)}" update=":formInfEsq3:estados">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        
+                    </h:column>
+                </li>   
+            </h:dataTable>
+        
+        </ul>
+        
+    </h:panelGroup>
+</h:form>
+    <h:panelGroup layout="block" styleClass="campo" id="familia">
+        <h:form>
+        <b><h:outputLabel for="fami" value="Família: "/></b>
+        <h:link id="fami" outcome="../Familia/perfil.xhtml" title="Clique para ir para a família desta espécie">
+            <h:outputText value="#{perfilEspecieView.entidade.familia.nome}"/>
+            <f:param name="codigo" value="#{perfilEspecieView.entidade.familia.id}"/>
+        </h:link>
+        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterEspecie.busca(perfilEspecieView.especie)}" oncomplete="mudaFamilia.show()" >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+        </p:commandLink>
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="campo" id="importancias">
+        <b><h:outputText styleClass="titulo" value="Importancia(s) Economica(s): "/></b><br/>
+        <ul><h:form>
+                <h:dataTable value="#{perfilEspecieView.entidade.importanciaEconomicas}" var="importancia">
+                <li>
+                <h:column>
+                    <h:outputText value="#{importancia.tipo.toString()}"/>
+                </h:column>
+                <h:column>
+                        
+                        
+                    <h:outputText value="#{importancia.descricao}" />
+                    
+                        
+                    </h:column>     
+               <!-- <h:column>
+                    <p:inplace editor="true"  toggleable="true">
+                        
+                        <p:inputText required="true"  value="#{importancia.descricao}" label="descricao"/>
+                        <p:ajax event="save" listener="#{manterImportanciaEconomica.salva()}" />
+                    </p:inplace>
+                </h:column>-->
+               <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterImportanciaEconomica.busca(importancia.id)}" oncomplete="cadastroImportancia.show()" >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterImportanciaEconomica.remove(importancia.id)}" update=":importancias">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        
+                    </h:column>
+               
+                </li>
+            </h:dataTable>
+            </h:form>
+        </ul>
+    </h:panelGroup>
+</ui:composition>
+

@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/Atlas/arquivos/estilos/style.css" rel="stylesheet" type="text/css" />
+        <title><h:outputText value="FloraSergipe :: "/><ui:insert name="titulo"/></title>
+    </h:head>
+    
+    <h:body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="menu">
+                    <ul>
+                        <li class="first"><a href="/Atlas/index.html" accesskey="1" title="">Principal</a></li>
+                        <li><a href="/Atlas/Familia/listagem.html" accesskey="2" title="">Família</a></li>
+                        <li><a href="/Atlas/Especie/listagem.html" accesskey="3" title="">Espécie</a></li>
+                        <li><a href="/Atlas/Detalhe/listagem.html" accesskey="4" title="">Detalhes</a></li>
+                        <li><a href="/Atlas/Habitat/listagem.html" accesskey="5" title="">Habitat</a></li>
+                        <li><a href="/Atlas/NomePopular/listagem.html" accesskey="6" title="">Nome Popular</a></li>
+                        <li><a href="/Atlas/Exercicio/listagem.html" accesskey="7" title="">Exercícios</a></li>
+                    </ul>
+                </div>
+                <div id="logo">
+                    <h1><a href="/Atlas/index.html">FloraSergipe</a></h1>
+                    <p>Atlas da Flora de Sergipe</p>
+                </div>
+            </div>
+            <div id="page">
+                
+                <div  id="sidebar">
+                    <ul>
+                        
+                        <li>
+                            <h2>Meu Menu</h2>
+                            <h:form id="formMenu">
+                                <p:growl showDetail="true" showSummary="true"/>
+                                <ul>
+                                    <li><a href="#">Editar Perfil</a></li>
+                                    <li><a href="/Atlas/Avaliacao/listagem.html">Avaliação</a></li>
+                                    <li><a href="#">Notas</a></li>
+                                    <li><a href="#">Consultar Professor</a></li>
+                                    <li><a href="/Atlas/Duvida/form.html"><h:outputText value="Registrar Duvida" rendered="#{sessao.admin || sessao.monitor}"/></a></li>
+                                    <li><p:commandLink value="+ Família" onclick="cadastroFamilia.show()" rendered="#{sessao.admin || sessao.monitor}"/></li>
+                                    <li><p:commandLink value="+ Habitat" onclick="cadastroHabitat.show()" rendered="#{sessao.admin || sessao.monitor}"/></li>
+                                    <li><p:commandLink value="+ Exercício" onclick="cadastroExercicio.show()" rendered="#{sessao.admin || sessao.monitor}"/></li>
+                                    <li><p:commandLink value="+ Avaliação" onclick="cadastroAvaliacao.show()" rendered="#{sessao.admin || sessao.monitor}"/></li>
+                                    <li><p:commandLink value="+ Turma" onclick="cadastroTurma.show()" rendered="#{sessao.admin || sessao.monitor}"/></li>
+                                    <!--  Desnescessário(apagar cadastroHabito)     <li><p:commandLink value="+ Habito" onclick="cadastroHabito.show()" rendered="#{sessao.admin || sessao.monitor}"/></li>-->
+                                    <li><a href="/Atlas/Habito/form.html"><h:outputText value="+ Habito" rendered="#{sessao.admin || sessao.monitor}"/></a></li>
+                                    <li><a href="/Atlas/Bibliografia/form.html"><h:outputText value="+ Bibliografia" rendered="#{sessao.admin || sessao.monitor}"/></a></li>
+                                    <li><a href="/Atlas/Agradecimento/form.html"><h:outputText value="+ Agradecimento" rendered="#{sessao.admin || sessao.monitor}"/></a></li>
+                                    <li><p:commandLink onclick="login.show()" value="Login" rendered="#{sessao.usuario == null}"/></li>
+                                    <li><p:commandLink onclick="cadastrar.show()" value="Cadastro" rendered="#{sessao.usuario == null || sessao.admin || sessao.professor}"/></li>
+                                    <li><p:commandLink value="Logout" action="#{loginMB.logout()}" rendered="#{sessao.usuario != null}" update=":formMenu,:cadastro"/></li>
+                                    <li><a href="/Atlas/Outros/contatos.html">Fale Conosco</a></li>
+                                    <li><a href="/Atlas/Outros/roteiros.html">Roteiros Didáticos</a></li>
+                                    <li><a href="/Atlas/Outros/faq.html">Perguntas Frequentes</a></li>
+                                    
+                                </ul>
+                            </h:form>
+                        </li>
+                    </ul>
+                </div>
+		<!-- end #sidebar -->
+                <div id="content">
+                    <div class="post">
+                        <ui:insert name="conteudo">Conteudo não especificado...</ui:insert>
+                    </div>
+                </div> 
+		<div style="clear: both">&nbsp;</div>
+            </div>
+        </div>
+        <div id="footer">
+            <p><a href="http://www.ufs.br" target="_blank"><strong>Universidade Federal de Sergipe</strong></a> | <a href="http://www.dcomp.ufs.br" target="_blank">Departamento de Computação</a> | <a href="http://www.proex.ufs.br" target="_blank">Proreitoria de Extensão</a> </p>
+        </div>
+        
+        <p:dialog width="600" modal="true" header="Login" widgetVar="login" resizable="false">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel for="login" value="Login: "/>
+                    <p:inputText id="login" value="#{loginMB.login}" required="true" requiredMessage="Campo necessário"/>
+
+                    <h:outputLabel for="senha" value="Senha: "/>
+                    <p:password id="senha" value="#{loginMB.senha}" feedback="false" minLength="6"/>
+
+                    <p:commandButton value="Login" action="#{loginMB.login}" oncomplete="login.hide()" update=":formMenu,:cadastro"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog  modal="true" header="Cadastrar-se" widgetVar="cadastrar" resizable="true" id="cadastro">
+            <h:form>
+                <h:panelGrid cellspacing="1" >
+                      
+                    <h:outputLabel for="Clogin" value="Login: "/>
+                        
+                    <p:inputText id="Clogin" required="true" requiredMessage="Você precisa digitar um login" value="#{manterUsuario.entidade.login}"/>
+                    
+                    <h:outputLabel for="Csenha" value="Senha: "/>
+                    <p:password id="Csenha" value="#{manterUsuario.entidade.senha}" feedback="true" minLength="6" inline="true"/>
+
+                    <h:outputLabel for="Cnome" value="Nome Completo: "/>
+                    <p:inputText id="Cnome" value="#{manterUsuario.entidade.nome}"/>
+                    
+                    <h:outputLabel for="Cemail" value="E-mail: "/>
+                    <p:inputText id="Cemail" value="#{manterUsuario.entidade.email}"/>
+                    <!--
+                    <h:outputLabel for="Csenha" value="Senha: "/>
+                    <p:password id="Csenha2" value="#{manterUsuario.entidade.senha}" feedback="true" minLength="6" inline="true"/>
+-->
+                   
+                    <h:outputLabel for="Csexo" value="Genero: "/>
+                    <p:selectOneRadio id="Csexo" value="#{manterUsuario.sexoEscolhido}" >
+                        <f:selectItems value="#{manterUsuario.sexos}"/>
+                        
+                    </p:selectOneRadio>
+                    
+                    
+                    
+                    <h:outputLabel for="Ctipo" value="Tipo: "/>
+                    <p:selectOneRadio id="Ctipo" value="#{manterUsuario.perfilEscolhido}">
+                        <f:selectItems value="#{manterUsuario.perfis}"/>
+                        <p:ajax update="Censino" event="click"/>
+                    </p:selectOneRadio>
+                    
+                    <h:outputLabel for="Cdata" value="Data de Nascimento: "/>
+                    <p:calendar id="Cdata" value="#{manterUsuario.entidade.dtNascimento}"/> 
+                    
+                    
+                    
+                    
+                   <!-- <c:if test="#{manterUsuario.perfilEscolhido.toString().equals('Professor usuário')}" id="ensinoIf" > -->
+                    <h:outputLabel for="Censino" value="Leciona em: "/>
+                    <p:selectOneMenu  id="Censino" value="#{manterUsuario.ensinoEscolhido}" disabled="#{!(manterUsuario.perfilEscolhido.toString().equals('Professor usuário')) }">
+                        <f:selectItems value="#{manterUsuario.ensinos}"/>
+                    </p:selectOneMenu>
+                    <!--</c:if>-->
+                    
+                    <h:outputLabel for="Cescola" value="Grau de Escolaridade: "/>
+                    <p:selectOneMenu  id="Cescola" value="#{manterUsuario.escolariodadeEscolhida}" >
+                        <f:selectItems value="#{manterUsuario.escolaridades}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid><br/>    
+                    
+                    <p:captcha label="captcha" language="pt" required="true"/>
+                    <br/>
+                    <center>
+                        
+                    <p:commandButton value="Cadastrar" action="#{manterUsuario.salva()}" oncomplete="cadastrar.hide()" update=":formMenu"/>
+                    </center>
+            </h:form>
+        </p:dialog>
+        
+        <ui:include src="/modals/cadastroFamilia.xhtml"/>
+        <ui:include src="/modals/cadastroHabito.xhtml"/>
+        <ui:include src="/modals/cadastroHabitat.xhtml"/>
+        <ui:include src="/modals/cadastroExercicio.xhtml"/>
+        <ui:include src="/modals/cadastroAvaliacao.xhtml"/>
+        <ui:include src="/modals/cadastroTurma.xhtml"/>
+        <ui:insert name="modals"></ui:insert>
+    </h:body>
+</html>

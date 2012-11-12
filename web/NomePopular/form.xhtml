@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro de Nome Popular </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:event listener="#{manterNomePopular.preLoad}" type="preRenderView"/>
+            </f:metadata>
+            <h1>Cadastro de Nome Popular</h1>
+            <h:form>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Nome:</ui:define>
+                        <h:inputText value="#{manterNomePopular.entidade.descricao}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{manterNomePopular.salva}" value="Salvar"/>
+                        <h:commandButton action="../index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                </ui:decorate>
+                <br/><br/><br/>
+                <h:dataTable value="#{manterNomePopular.listagem}" var="nome">
+                    <h:column>
+                        <f:facet name="header">Descrição</f:facet>
+                        <h:outputText value="#{nome.descricao}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Situação</f:facet>
+                        <h:outputText value="#{nome.situacao}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Edição</f:facet>
+                        <h:commandLink title="Clique p/ editar este nome" action="#{manterNomePopular.busca(nome.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ remover este nome" action="#{manterNomePopular.remove(nome.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ enviar este nome para o professor" action="#{manterNomePopular.envia(nome.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

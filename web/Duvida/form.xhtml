@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro de Duvida </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:event listener="#{manterDuvida.preLoad}" type="preRenderView"/>
+            </f:metadata>
+            <h1 align="center">Cadastro de Duvida</h1>
+            <h:form>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Enunciado:</ui:define>
+                        <h:inputText value="#{manterDuvida.entidade.enunciado}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Resposta:</ui:define>
+                        <h:inputText value="#{manterDuvida.entidade.resposta}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{manterDuvida.salva}" value="Salvar"/>
+                        <h:commandButton action="../index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                </ui:decorate>
+                <br/><br/><br/>
+                <h:dataTable value="#{manterDuvida.listagem}" var="duvida">
+                    <h:column>
+                        <f:facet name="header">Enunciado</f:facet>
+                        <h:outputText value="#{duvida.enunciado}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Resposta</f:facet>
+                        <h:outputText value="#{duvida.resposta}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Edição</f:facet>
+                        <h:commandLink title="Clique p/ editar esta família" action="#{manterDuvida.busca(duvida.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ remover esta família" action="#{manterDuvida.remove(duvida.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{manterDuvida.envia(duvida.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

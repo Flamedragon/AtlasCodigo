@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/arquivos/modelos/decorador.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="titulo"> Cadastro de Bibliografia </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            
+            <h1 align="center">Formulário de contato</h1>
+            <h:form>
+                    
+                <br/>
+                <br/>
+                <h:panelGroup>
+                    
+                        <h:outputText value="Digite seu nome: "/><br/>
+                        <p:inputText required="true" requiredMessage="Você precisa colocar seu nome." value="#{contatoBean.remetente}"/>
+                   
+                        <br/>
+                        
+                        <h:outputText value="Digite seu e-mail para que possamos responder: "/><br/>
+                        <p:inputText required="true" value="#{contatoBean.emailRemetente}"/>
+                   
+                    <br/>
+                    <br/>
+                    </h:panelGroup>
+                            <h:outputText value="Digite sua mensagem: "/><br/>  
+                            <p:inputTextarea cols="40" rows="10" required="true" requiredMessage="Você precisa digitar alguma mensagem." value="#{contatoBean.mensagem}"/>
+                        <h:panelGroup>
+                    <br/>   
+                    <br/>   
+                        <ui:decorate template="/arquivos/modelos/botoes.xhtml">    
+                            <p:commandButton action="#{contatoBean.enviar()}" update="growlCont" onsuccess="/index.html?faces-redirect=true" value="Enviar"/>
+                        <p:commandButton action="/index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                        </ui:decorate>
+                    
+                    
+                    
+                    </h:panelGroup>
+                            <p:growl id="growlCont"/>
+                            <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                       
+                    <p:captcha language="pt" required="true" label="captcha"/>
+
+                
+                    
+                
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

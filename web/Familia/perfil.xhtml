@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Família :: #{manterFamilia.entidade.nome} </ui:define>
+    <ui:define name="conteudo">
+        <f:view id="view1">
+            <f:metadata>
+                <f:viewParam name="codigo" value="#{manterFamilia.entidade.id}" />
+                <f:event type="preRenderView" listener="#{manterFamilia.preRender(manterFamilia.entidade.id)}"/>
+            </f:metadata>
+            <h:form id="menuform">
+                <p:contextMenu rendered="#{sessao.admin || sessao.monitor}">
+                    <p:menuitem value="Publicar" action="#{manterFamilia.publicar}" rendered="#{sessao.admin and (manterFamilia.entidade.situacao.pendente || manterFamilia.entidade.situacao.edicao)}"/>
+                    <p:menuitem value="Enviar" action="#{manterFamilia.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterFamilia.entidade.situacao.edicao}"/>
+                    <p:menuitem value="Editar" onclick="cadastroFamilia.show()" />
+                    <p:menuitem value="Excluir" action="#{manterFamilia.remove}"/>
+                    <p:menuitem value="Adicionar espécie" oncomplete="cadastroEspecie.show()"/>
+                </p:contextMenu>
+            </h:form>
+            
+            
+            <h1 align="center" id="Fnome"><h:outputText value="#{manterFamilia.entidade.nome}"/></h1>
+            <h:panelGroup id="Fdescricao" layout="block" styleClass="campo">
+                <b><h:outputText styleClass="titulo" value="Descrição: "/></b><br/>
+                <p:spacer width="30" height="2"/> <h:outputText value="#{manterFamilia.entidade.descricao}"/>
+            </h:panelGroup>
+            <h:panelGroup id="Fimportancia" layout="block" styleClass="campo">
+                <b><h:outputText styleClass="titulo" value="Importância Econômica: "/></b><br/>
+                <p:spacer width="30" height="2"/> <h:outputText value="#{manterFamilia.entidade.importanciaEconomica}"/>
+            </h:panelGroup><br/><br/>
+            
+            <h:form>
+                <center>
+                    <ui:repeat id="Fespecies" value="#{manterFamilia.entidade.especies}" var="especie">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{especie.genero} &nbsp;" rendered="#{especie.genero!=''}"/>
+                            <h:outputText value="#{especie.epiteto} &nbsp;" rendered="#{especie.epiteto!=''}"/>
+                            <h:outputText value="#{especie.subEspecie} &nbsp;" rendered="#{especie.subEspecie!=''}"/>
+                            <h:outputText value="#{especie.variedade} &nbsp;" rendered="#{especie.variedade!=''}"/>
+                            <h:outputText value="#{especie.subVariedade}" rendered="#{especie.subVariedade!=''}"/>
+                            <f:param name="codigo" value="#{especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                </center>
+            </h:form>
+        </f:view>
+        <ui:include src="/modals/cadastroFamilia.xhtml"/>
+        <ui:include src="/modals/cadastroEspecie.xhtml"/>
+    </ui:define>
+    
+    
+    <ui:insert name="modals">
+    </ui:insert>
+</ui:composition>

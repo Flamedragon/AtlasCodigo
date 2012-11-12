@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Avaliações </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <h1 align="center"></h1>
+            <h:form>
+                <center>
+                    <h:panelGroup rendered="#{sessao.admin || sessao.monitor || sessao.aluno}">
+                        <ui:repeat value="#{listagemView.avaliacaosEmEdicao}" var="avaliacao">
+                            <h:link outcome="/Avaliacao/perfil.xhtml" title="Em edição" style="color: #000000;">
+                                <h:outputText value="#{avaliacao.nome}"/>
+                                <f:param name="codigo" value="#{avaliacao.id}"/>
+                            </h:link><br/>
+                        </ui:repeat><br/><br/>
+                        
+                        <ui:repeat value="#{listagemView.avaliacaosPendentes}" var="avaliacao">
+                            <h:link outcome="/Avaliacao/perfil.xhtml" title="Não publicada" style="color: #FF0000;">
+                                <h:outputText value="#{avaliacao.nome}"/>
+                                <f:param name="codigo" value="#{avaliacao.id}"/>
+                            </h:link><br/>
+                        </ui:repeat><br/><br/>
+                    </h:panelGroup>
+                    
+                    <ui:repeat value="#{listagemView.avaliacaosPublicados}" var="avaliacao">
+                        <h:link outcome="/Avaliacao/perfil.xhtml" title="Clique para ver a descrição completa desta família" style="color: #FFFFFF;">
+                            <h:outputText value="#{avaliacao.nome}"/>
+                            <f:param name="codigo" value="#{avaliacao.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                </center>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

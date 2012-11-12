@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog modal="true" header="Cadastrar detalhe" widgetVar="cadastroDetalhe" resizable="true" minWidth="600">
+        <h:form enctype="multipart/form-data">
+            <ui:decorate template="/arquivos/modelos/form.xhtml">
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Título:</ui:define>
+                        <h:inputText value="#{manterDetalhe.entidade.titulo}"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Visão:</ui:define>
+                    <h:selectOneRadio id="estado" value="#{manterDetalhe.visaoEscolhida}" layout="pageDirection">
+                        <f:selectItems value="#{manterDetalhe.visoes}"/>
+                    </h:selectOneRadio>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Elemento:</ui:define>
+                    <h:selectOneRadio id="elemento" value="#{manterDetalhe.elementoEscolhido}" layout="pageDirection">
+                        <f:selectItems value="#{manterDetalhe.elementos}"/>
+                    </h:selectOneRadio>
+                    
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <p:fileUpload  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileUploadListener="#{manterDetalhe.upload}"
+                                  label="Foto" mode="advanced" />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                    <p:commandButton action="#{manterDetalhe.enviar}" value="Salvar" onsuccess="cadastroDetalhe.hide()"/>
+                    <p:commandButton onclick="cadastroDetalhe.hide()" value="Cancelar" immediate="true"/>
+                </ui:decorate>
+            </ui:decorate>
+        </h:form>
+    </p:dialog>
+</ui:composition>

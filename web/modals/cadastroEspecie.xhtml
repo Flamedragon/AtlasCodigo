@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog modal="true" header="Cadastrar especie" widgetVar="cadastroEspecie" resizable="false" minWidth="600" >
+        <h:form>
+            <ui:decorate template="/arquivos/modelos/form.xhtml">
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Gênero:</ui:define>
+                    <p:inputText value="#{especieView.entidade.genero}" required="true" requiredMessage="Campo obrigatório." />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Epíteto:</ui:define>
+                    <p:inputText value="#{especieView.entidade.epiteto}"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Sub-espécie:</ui:define>
+                    <p:inputText value="#{especieView.entidade.subEspecie}" />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Variedade:</ui:define>
+                    <p:inputText value="#{especieView.entidade.variedade}"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Sub-variedade:</ui:define>
+                    <p:inputText value="#{especieView.entidade.subVariedade}"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Característica Ecológica:</ui:define>
+                    <p:inputTextarea value="#{especieView.entidade.caracteristicaEcologica}" maxHeight="1024" autoResize="false" cols="16"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Descrição:</ui:define>
+                    <p:inputTextarea value="#{especieView.entidade.descricao}" maxHeight="1024" autoResize="false" cols="16"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Forma:</ui:define>
+                    <p:inputText value="#{especieView.entidade.forma}" />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Sub-forma:</ui:define>
+                    <p:inputText value="#{especieView.entidade.subForma}" />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Autor:</ui:define>
+                    <p:inputText value="#{especieView.entidade.autor}" />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Tipo:</ui:define>
+                    <p:inputText value="#{especieView.entidade.tipoHerbarioASE}" />
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                    <p:commandButton action="#{especieView.salva}" value="Salvar" onsuccess="cadastroEspecie.hide()"/>
+                    <p:commandButton onclick="cadastroEspecie.hide()" value="Cancelar" immediate="true"/>
+                </ui:decorate>
+            </ui:decorate>
+        </h:form>
+    </p:dialog>
+</ui:composition>

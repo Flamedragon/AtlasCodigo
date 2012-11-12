@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro de Detalhe </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:event listener="#{manterDetalhe.preLoad}" type="preRenderView"/>
+            </f:metadata>
+            <h1 align="center">Cadastro de Detalhe</h1>
+            <h:form>
+                <p:growl showSummary="true" showDetail="true"/>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Título:</ui:define>
+                            <h:inputText value="#{manterDetalhe.entidade.titulo}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Visão:</ui:define>
+                        <h:selectOneRadio id="estado" value="#{manterDetalhe.visaoEscolhida}" layout="pageDirection">
+                            <f:selectItems value="#{manterDetalhe.visoes}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Elemento:</ui:define>
+                        <h:selectOneRadio id="elemento" value="#{manterDetalhe.elementoEscolhido}" layout="pageDirection">
+                            <f:selectItems value="#{manterDetalhe.elementos}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <p:fileUpload allowTypes="png,jpg,gif" fileUploadListener="#{manterDetalhe.upload}"
+                                      label="Foto" mode="advanced" update="img"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{manterDetalhe.salva}" value="Salvar"/>
+                        <h:commandButton action="/index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                </ui:decorate>
+                <br/><br/><br/>
+                <h:dataTable value="#{manterDetalhe.listagem}" var="detalhe">
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                        <h:outputText value="#{detalhe.titulo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Edição</f:facet>
+                        <h:commandLink title="Clique p/ editar esta família" action="#{manterDetalhe.busca(detalhe.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ remover esta família" action="#{manterDetalhe.remove(detalhe.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{manterDetalhe.envia(detalhe.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

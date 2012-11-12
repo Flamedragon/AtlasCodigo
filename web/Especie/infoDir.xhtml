@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    
+    <f:view>
+        <h:form enctype="multipart/form-data" id="formInfDir1">
+
+            
+    <h:panelGroup layout="block" styleClass="campo" id="habitos">
+        <h:dataTable value="#{perfilEspecieView.entidade.habitoEspecies}" var="habito">
+                    <h:column>
+                        <f:facet name="header">Habitos: </f:facet>
+                        <h:outputLink value="/Atlas/arquivos/fotos/#{habito.caminho}" title="#{habito.habito.descricao}">
+                        <li><h:outputText value="#{habito.habito.descricao}"/></li>
+                        </h:outputLink>
+                    </h:column> 
+                    <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterHabitoEspecie.busca(habito.id)}" oncomplete="editaHabitoEspecie.show()" >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterHabitoEspecie.remove(habito.id)}" update=":formInfDir1">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta detalhe para o professor" action="#{manterHabito.envia(habito.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+    </h:dataTable>
+    </h:panelGroup>        
+        </h:form>
+        <h:form id="formInfDir2">
+    <h:panelGroup layout="block" styleClass="campo" id="anatomia">
+        <h:dataTable value="#{perfilEspecieView.anatomico}" var="detalhe">
+                    <h:column>
+                        <f:facet name="header">Anatomia: </f:facet>
+                        <h:outputLink value="/Atlas/arquivos/fotos/#{detalhe.caminho}" title="#{detalhe.titulo}">
+                        <li><h:outputText value="#{detalhe.titulo}"/></li>
+                        </h:outputLink>
+                    </h:column> 
+                    <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterDetalhe.busca(detalhe.id)}" oncomplete="cadastroDetalhe.show()" >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterDetalhe.remove(detalhe.id)}" update=":formInfDir1">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta detalhe para o professor" action="#{manterDetalhe.envia(detalhe.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+    </h:dataTable>
+    </h:panelGroup>
+        </h:form>
+        <h:form id="formInfDir3">
+    <h:panelGroup layout="block" styleClass="campo" id="morfologia">
+    <h:dataTable value="#{perfilEspecieView.morfologico}" var="detalhe">
+                    <h:column>
+                        <f:facet name="header">Morfologia: </f:facet>
+                        <h:outputLink value="/Atlas/arquivos/fotos/#{detalhe.caminho}" title="#{detalhe.titulo}">
+                        <li><h:outputText value="#{detalhe.titulo}"/></li>
+                        </h:outputLink>
+                    </h:column> 
+                    <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        <p:commandLink title="Clique p/ editar esta família" action="#{manterDetalhe.busca(detalhe.id)}" oncomplete="cadastroDetalhe.show()" >
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <p:commandLink title="Clique p/ remover esta família" action="#{manterDetalhe.remove(detalhe.id)}" update=":formInfDir3">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{manterDetalhe.envia(detalhe.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+    </h:dataTable>
+    </h:panelGroup>
+    </h:form>
+    
+    </f:view>    
+     
+</ui:composition>
+

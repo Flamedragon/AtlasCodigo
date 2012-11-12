@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Famílias </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <h1 align="center"></h1>
+           
+            <h:form>
+                
+                <f:metadata>
+                <f:viewParam name="letra" value="#{listagemView.letra}" />
+            </f:metadata>
+                
+                
+                <h:outputText value="Filtragem: " />  
+                
+                <p:selectBooleanCheckbox label="Ediçao" value="#{listagemView.mostraEdicao}">
+                    <p:ajax process="@all" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Em Edição" />
+                
+                <p:selectBooleanCheckbox label="Pendentes" value="#{listagemView.mostraPendente}">
+                    <p:ajax process="@all" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Pendentes" />
+                
+                <p:selectBooleanCheckbox label="Publicadas" value="#{listagemView.mostraPublicados}">
+                    <p:ajax process="@all" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Publicadas" />
+                
+                
+            
+               <table border="1">
+                        <tr>
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar todas as famílias" style="color: #FFFFFF;">
+                                <h:outputText value="Todos"/>
+                                
+                                </h:link><br/>
+                            </td>
+                            
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com A" style="color: #FFFFFF;">
+                                <h:outputText value="A"/>
+                                <f:param name="letra" value="A"/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com B" style="color: #FFFFFF;">
+                                <h:outputText value="B"/>
+                                <f:param name="letra" value='B'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com C" style="color: #FFFFFF;">
+                                <h:outputText value="C"/>
+                                <f:param name="letra" value='C'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com D" style="color: #FFFFFF;">
+                                <h:outputText value="D"/>
+                                <f:param name="letra" value='D'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com E" style="color: #FFFFFF;">
+                                <h:outputText value="E"/>
+                                <f:param name="letra" value='E'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com F" style="color: #FFFFFF;">
+                                <h:outputText value="F"/>
+                                <f:param name="letra" value='F'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com G" style="color: #FFFFFF;">
+                                <h:outputText value="G"/>
+                                <f:param name="letra" value='G'/>
+                                </h:link><br/>
+                            </td> 
+                            
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com H" style="color: #FFFFFF;">
+                                <h:outputText value="H"/>
+                                <f:param name="letra" value='H'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com I" style="color: #FFFFFF;">
+                                <h:outputText value="I"/>
+                                <f:param name="letra" value='I'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com J" style="color: #FFFFFF;">
+                                <h:outputText value="J"/>
+                                <f:param name="letra" value='J'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com K" style="color: #FFFFFF;">
+                                <h:outputText value="K"/>
+                                <f:param name="letra" value='K'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com L" style="color: #FFFFFF;">
+                                <h:outputText value="L"/>
+                                <f:param name="letra" value='L'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com M" style="color: #FFFFFF;">
+                                <h:outputText value="M"/>
+                                <f:param name="letra" value='M'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com N" style="color: #FFFFFF;">
+                                <h:outputText value="N"/>
+                                <f:param name="letra" value='N'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com O" style="color: #FFFFFF;">
+                                <h:outputText value="O"/>
+                                <f:param name="letra" value='O'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com P" style="color: #FFFFFF;">
+                                <h:outputText value="P"/>
+                                <f:param name="letra" value='P'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com Q" style="color: #FFFFFF;">
+                                <h:outputText value="Q"/>
+                                <f:param name="letra" value='Q'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com R" style="color: #FFFFFF;">
+                                <h:outputText value="R"/>
+                                <f:param name="letra" value='R'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com S" style="color: #FFFFFF;">
+                                <h:outputText value="S"/>
+                                <f:param name="letra" value='S'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com T" style="color: #FFFFFF;">
+                                <h:outputText value="T"/>
+                                <f:param name="letra" value='T'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com U" style="color: #FFFFFF;">
+                                <h:outputText value="U"/>
+                                <f:param name="letra" value='U'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com V" style="color: #FFFFFF;">
+                                <h:outputText value="V"/>
+                                <f:param name="letra" value='V'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com W" style="color: #FFFFFF;">
+                                <h:outputText value="W"/>
+                                <f:param name="letra" value='W'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com X" style="color: #FFFFFF;">
+                                <h:outputText value="X"/>
+                                <f:param name="letra" value='X'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com Y" style="color: #FFFFFF;">
+                                <h:outputText value="Y"/>
+                                <f:param name="letra" value='Y'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Familia/listagem.xhtml" title="Mostrar as famílias que começam com Z" style="color: #FFFFFF;">
+                                <h:outputText value="Z"/>
+                                <f:param name="letra" value='Z'/>
+                                </h:link><br/>
+                            </td> 
+                        
+                        
+                        </tr>
+                        
+                        
+                        
+                        
+                    </table><br/>
+                
+            
+                <h:panelGroup id="listas">
+             
+                    <center>
+                        <h:panelGroup rendered="#{(sessao.admin || sessao.monitor || sessao.aluno || sessao.aluno) and listagemView.mostraEdicao}">
+                        <ui:repeat value="#{listagemView.familiasEmEdicaoLetra}" var="familia">
+                            <h:link outcome="/Familia/perfil.xhtml" title="Em edição" style="color: #000000;">
+                                <h:outputText value="#{familia.nome}"/>
+                                <f:param name="codigo" value="#{familia.id}"/>
+                            </h:link><br/>
+                        </ui:repeat><br/><br/>
+                        
+                        </h:panelGroup>    
+                        <h:panelGroup rendered="#{(sessao.admin || sessao.monitor || sessao.aluno || sessao.aluno) and listagemView.mostraPendente}">
+                        <ui:repeat value="#{listagemView.familiasPendentesLetra}" var="familia">
+                            <h:link outcome="/Familia/perfil.xhtml" title="Não publicada" style="color: #FF0000;">
+                                <h:outputText value="#{familia.nome}"/>
+                                <f:param name="codigo" value="#{familia.id}"/>
+                            </h:link><br/>
+                        </ui:repeat><br/><br/>
+                    </h:panelGroup>
+                    
+                        <h:panelGroup rendered="#{listagemView.mostraPublicados}" >
+                    <ui:repeat value="#{listagemView.familiasPublicadasLetra}" var="familia">
+                        <h:link outcome="/Familia/perfil.xhtml" title="Clique para ver a descrição completa desta família" style="color: #FFFFFF;">
+                            <h:outputText value="#{familia.nome}"/>
+                            <f:param name="codigo" value="#{familia.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                        </h:panelGroup>    
+                </center>
+                </h:panelGroup>
+            
+            </h:form>
+            
+        </f:view>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro da Relação Hábito/Espécie </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <h1 align="center">Cadastro da Relação Hábito/Espécie</h1>
+            <h:form>
+                <p:growl showSummary="true" showDetail="true"/>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Hábitos:</ui:define>
+                        <h:selectOneRadio value="#{manterHabitoEspecie.habito}" layout="pageDirection">
+                            <f:selectItems value="#{manterHabitoEspecie.itens}" var="item" itemLabel="#{item.descricao}" itemValue="#{item.id}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <p:fileUpload allowTypes="png,jpg,gif" fileUploadListener="#{manterHabitoEspecie.upload}"
+                                      label="Foto" mode="advanced" update="img"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{manterHabitoEspecie.salva}" value="Salvar"/>
+                        <h:commandButton action="../index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                </ui:decorate>
+                <br/><br/><br/>
+                <h:dataTable value="#{manterHabitoEspecie.listagem}" var="HE">
+                    <h:column>
+                        <f:facet name="header">Habito</f:facet>
+                        <h:outputText value="#{HE.habito.descricao}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Edição</f:facet>
+                        <h:commandLink title="Clique p/ editar esta família" action="#{manterHabitoEspecie.busca(HE.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ remover esta família" action="#{manterHabitoEspecie.remove(HE.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{manterHabitoEspecie.envia(HE.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

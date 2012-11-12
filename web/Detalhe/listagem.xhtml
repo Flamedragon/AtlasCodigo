@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+    
+    <ui:define name="titulo"> Detalhes </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <h1 align="center"></h1>
+            <h:form>
+                
+            <f:metadata>
+                <f:viewParam name="letra" value="#{listagemView.letra}" />
+            </f:metadata>
+                
+                
+                
+                 <h:outputText value="Filtragem: " />  
+                 
+                <p:selectBooleanCheckbox label="Semente" value="#{listagemView.mostraSemente}">
+                        <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Semente" />
+                
+                <p:selectBooleanCheckbox label="Caule" value="#{listagemView.mostraCaule}">
+                    <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Caule" />                
+                
+                <p:selectBooleanCheckbox label="Flor" value="#{listagemView.mostraFlor}">
+                <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>    
+                <h:outputText value="Flor" />                
+
+                <p:selectBooleanCheckbox label="Folha" value="#{listagemView.mostraFolha}">
+                    <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Folha" />                
+
+                <p:selectBooleanCheckbox label="Fruto" value="#{listagemView.mostraFruto}">
+                    <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Fruto" />                
+
+                <p:selectBooleanCheckbox label="Raiz" value="#{listagemView.mostraRaiz}">
+                    <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Raiz" />                
+
+                <p:selectBooleanCheckbox label="Anatomia" value="#{listagemView.mostraAnatomica}">
+                    <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Anatomia" />                
+
+                <p:selectBooleanCheckbox label="Morfologia" value="#{listagemView.mostraMorfologica}">
+                    <p:ajax process="@form" update="listas"/>
+                </p:selectBooleanCheckbox>
+                <h:outputText value="Morfologia" />  
+                
+               
+                    <table border="1">
+                        <tr>
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar todas as espécies" style="color: #FFFFFF;">
+                                <h:outputText value="Todos"/>
+                                
+                                </h:link><br/>
+                            </td>
+                            
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com A" style="color: #FFFFFF;">
+                                <h:outputText value="A"/>
+                                <f:param name="letra" value="A"/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com B" style="color: #FFFFFF;">
+                                <h:outputText value="B"/>
+                                <f:param name="letra" value='B'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com C" style="color: #FFFFFF;">
+                                <h:outputText value="C"/>
+                                <f:param name="letra" value='C'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com D" style="color: #FFFFFF;">
+                                <h:outputText value="D"/>
+                                <f:param name="letra" value='D'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com E" style="color: #FFFFFF;">
+                                <h:outputText value="E"/>
+                                <f:param name="letra" value='E'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com F" style="color: #FFFFFF;">
+                                <h:outputText value="F"/>
+                                <f:param name="letra" value='F'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com G" style="color: #FFFFFF;">
+                                <h:outputText value="G"/>
+                                <f:param name="letra" value='G'/>
+                                </h:link><br/>
+                            </td> 
+                            
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com H" style="color: #FFFFFF;">
+                                <h:outputText value="H"/>
+                                <f:param name="letra" value='H'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com I" style="color: #FFFFFF;">
+                                <h:outputText value="I"/>
+                                <f:param name="letra" value='I'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com J" style="color: #FFFFFF;">
+                                <h:outputText value="J"/>
+                                <f:param name="letra" value='J'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com K" style="color: #FFFFFF;">
+                                <h:outputText value="K"/>
+                                <f:param name="letra" value='K'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com L" style="color: #FFFFFF;">
+                                <h:outputText value="L"/>
+                                <f:param name="letra" value='L'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com M" style="color: #FFFFFF;">
+                                <h:outputText value="M"/>
+                                <f:param name="letra" value='M'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com N" style="color: #FFFFFF;">
+                                <h:outputText value="N"/>
+                                <f:param name="letra" value='N'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com O" style="color: #FFFFFF;">
+                                <h:outputText value="O"/>
+                                <f:param name="letra" value='O'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com P" style="color: #FFFFFF;">
+                                <h:outputText value="P"/>
+                                <f:param name="letra" value='P'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com Q" style="color: #FFFFFF;">
+                                <h:outputText value="Q"/>
+                                <f:param name="letra" value='Q'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com R" style="color: #FFFFFF;">
+                                <h:outputText value="R"/>
+                                <f:param name="letra" value='R'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com S" style="color: #FFFFFF;">
+                                <h:outputText value="S"/>
+                                <f:param name="letra" value='S'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com T" style="color: #FFFFFF;">
+                                <h:outputText value="T"/>
+                                <f:param name="letra" value='T'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com U" style="color: #FFFFFF;">
+                                <h:outputText value="U"/>
+                                <f:param name="letra" value='U'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com V" style="color: #FFFFFF;">
+                                <h:outputText value="V"/>
+                                <f:param name="letra" value='V'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com W" style="color: #FFFFFF;">
+                                <h:outputText value="W"/>
+                                <f:param name="letra" value='W'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com X" style="color: #FFFFFF;">
+                                <h:outputText value="X"/>
+                                <f:param name="letra" value='X'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com Y" style="color: #FFFFFF;">
+                                <h:outputText value="Y"/>
+                                <f:param name="letra" value='Y'/>
+                                </h:link><br/>
+                            </td> 
+                            <td>
+                                <h:link outcome="/Detalhe/listagem.xhtml" title="Mostrar as espécies que começam com Z" style="color: #FFFFFF;">
+                                <h:outputText value="Z"/>
+                                <f:param name="letra" value='Z'/>
+                                </h:link><br/>
+                            </td> 
+                        
+                        
+                        </tr>
+                
+                
+                    </table>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <h:panelGroup id="listas">
+                
+            <h:panelGroup rendered="#{listagemView.mostraAnatomica}">    
+                <h:panelGroup rendered="#{listagemView.mostraCaule}">         
+                
+                    <ui:repeat value="#{listagemView.anatomiasCauleLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>
+                <h:panelGroup rendered="#{listagemView.mostraFlor}">   
+                
+                    <ui:repeat value="#{listagemView.anatomiasFlorLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                    
+                </h:panelGroup>        
+                <h:panelGroup rendered="#{listagemView.mostraFolha}">
+                
+                    <ui:repeat value="#{listagemView.anatomiasFolhaLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>    
+                <h:panelGroup rendered="#{listagemView.mostraFruto}">
+                
+                    <ui:repeat value="#{listagemView.anatomiasFrutoLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.titulo}" rendered="#{detalhe.titulo!=''}"/><h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>    
+                <h:panelGroup rendered="#{listagemView.mostraRaiz}">
+                
+                    <ui:repeat value="#{listagemView.anatomiasRaizLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>    
+                <h:panelGroup rendered="#{listagemView.mostraSemente}">
+                
+                    <ui:repeat value="#{listagemView.anatomiasSementeLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>
+            </h:panelGroup>
+            
+                
+<!--                
+                
+            Listagem morfologia
+                
+                
+                
+                
+
+-->
+
+                <h:panelGroup rendered="#{listagemView.mostraMorfologica}">    
+                <h:panelGroup rendered="#{listagemView.mostraCaule}">         
+                
+                <ui:repeat value="#{listagemView.morfologiasCauleLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>
+                <h:panelGroup rendered="#{listagemView.mostraFlor}">   
+                
+                    <ui:repeat value="#{listagemView.morfologiasFlorLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                    
+                </h:panelGroup>        
+                <h:panelGroup rendered="#{listagemView.mostraFolha}">
+                
+                    <ui:repeat value="#{listagemView.morfologiasFolhaLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>    
+                <h:panelGroup rendered="#{listagemView.mostraFruto}">
+                
+                    <ui:repeat value="#{listagemView.morfologiasFrutoLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.titulo}" rendered="#{detalhe.titulo!=''}"/><h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>    
+                <h:panelGroup rendered="#{listagemView.mostraRaiz}">
+                
+                    <ui:repeat value="#{listagemView.morfologiasRaizLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>    
+                <h:panelGroup rendered="#{listagemView.mostraSemente}">
+                
+                    <ui:repeat value="#{listagemView.morfologiasSementeLetra}" var="detalhe">
+                        <h:link outcome="/Especie/perfil.xhtml" title="Clique para ver a descrição completa desta espécie" style="color: #FFFFFF;">
+                            <h:outputText value="#{detalhe.especie.genero} &nbsp;" rendered="#{detalhe.especie.genero!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.epiteto} &nbsp;" rendered="#{detalhe.especie.epiteto!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subEspecie} &nbsp;" rendered="#{detalhe.especie.subEspecie!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.variedade} &nbsp;" rendered="#{detalhe.especie.variedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="#{detalhe.especie.subVariedade} &nbsp; " rendered="#{detalhe.especie.subVariedade!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <h:outputText value="&ndash; &nbsp; #{detalhe.titulo}" rendered="#{detalhe.titulo!='' and (detalhe.especie.publicada or sessao.admin or sessao.monitor)}"/>
+                            <f:param name="codigo" value="#{detalhe.especie.id}"/>
+                        </h:link><br/>
+                    </ui:repeat>
+                
+                </h:panelGroup>
+            </h:panelGroup>    
+                
+                
+                
+                
+                
+                
+                
+                
+            
+            </h:panelGroup>       
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>
+

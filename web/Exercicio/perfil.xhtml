@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Exercício :: #{manterExercicio.entidade.pergunta} </ui:define>
+    <ui:define name="conteudo">
+        
+    <f:view id="perfil">
+            <f:metadata>
+                <f:viewParam name="codigo" value="#{manterExercicio.entidade.id}" />
+                <f:event type="preRenderView" listener="#{manterExercicio.preRender(manterExercicio.entidade.id)}"/>
+            </f:metadata>
+            <h:form id="formMenuExercicio">
+                <p:contextMenu rendered="#{sessao.admin || sessao.monitor}">
+                    <p:menuitem value="Publicar" action="#{manterExercicio.publicar}" rendered="#{sessao.admin and (manterExercicio.entidade.situacao.pendente || manterExercicio.entidade.situacao.edicao)}"/>
+                    <p:menuitem value="Enviar" action="#{manterExercicio.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterExercicio.entidade.situacao.edicao}"/>
+                    <p:menuitem value="Editar" onclick="cadastroExercicio.show()" update="formExercicios"/>
+                    <p:menuitem value="Excluir" action="#{manterExercicio.remove}"/>
+                    <p:menuitem value="Adicionar Resposta" oncomplete="cadastroResposta.show()" />
+                    <p:menuitem value="Adicionar à avaliação:" oncomplete="adicionarAvaliacao.show()"/>
+                    <p:menuitem value="Editar Resposta Selecionada" action="#{manterResposta.busca(manterExercicio.respostaEscolhida)}" oncomplete="editaResposta.show()" update="formExercicios"/>
+                    <p:menuitem value="Remover Resposta Selecionada" action="#{manterResposta.remove(manterExercicio.respostaEscolhida)}"/>
+                </p:contextMenu>
+                
+      
+            
+                <h:form id="formExercicios">
+            <h1 align="center" id="Exnome">
+                <h:outputText value="#{manterExercicio.entidade.titulo} &nbsp;" rendered="#{manterExercicio.entidade.pergunta!=null}"/>
+               
+            </h1><br/>
+            
+            <center>
+                <p:graphicImage id="imagem" rendered="#{manterExercicio.entidade.formato != null}" width="600" height="400" url="/arquivos/fotos/#{manterExercicio.entidade.caminho}" ></p:graphicImage>
+            </center>
+            <br/> <br/>
+            <!--<h1 align="center" id="FPergunta"><h:outputText value="#{manterExercicio.entidade.pergunta}"/></h1>-->
+            <h:panelGroup id="Fdescricao" layout="block" styleClass="campo">
+                <b><h:outputText styleClass="titulo" value="Enunciado: "/></b><br/><br/>
+                <p:spacer width="30" height="2"/> <h:outputText value="#{manterExercicio.entidade.pergunta}"/>
+            </h:panelGroup>
+            
+            <br/><br/>
+            
+            
+            <ui:define name="nome">Respostas:</ui:define>
+            <h:selectOneRadio id="respostas" value="#{manterExercicio.respostaEscolhida}">
+            <f:selectItems  value="#{manterExercicio.respostas}" />
+            
+               
+            </h:selectOneRadio> 
+            
+            </h:form>
+            <br/><br/>
+            <p:commandButton id="submitButton" value="Responder" update="growl" action="#{manterRespostaAluno.salva(sessao.usuario)}"/>
+            
+            
+            
+                  
+    
+            
+            
+            
+            
+            <p:growl id="growl" showDetail="true" sticky="true"/>    
+         
+            
+            
+            </h:form>       
+                
+</f:view>        
+        
+    </ui:define>
+    
+    <ui:define name="modals">
+        <ui:include src="/modals/cadastroExercicio.xhtml"/>
+        <ui:include src="/modals/cadastroResposta.xhtml"/>        
+        <ui:include src="/modals/editaResposta.xhtml"/>        
+        <ui:include src="/modals/adicionarAvaliacao.xhtml"/>        
+    </ui:define>
+
+</ui:composition>

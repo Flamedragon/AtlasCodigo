@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog modal="true" header="Cadastrar Habito-Espécie" widgetVar="editaHabitoEspecie" resizable="true">
+        <h:form enctype="multipart/form-data">
+            <ui:decorate template="/arquivos/modelos/form.xhtml">
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Hábitos:</ui:define>
+                    <h:selectOneRadio value="#{manterHabitoEspecie.habito}" layout="pageDirection" required="true" requiredMessage="Campo obrigatório.">
+                        <f:selectItems value="#{manterHabitoEspecie.itens}" var="item" itemLabel="#{item.descricao}" itemValue="#{item.id}"/>
+                    </h:selectOneRadio>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <p:fileUpload  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" fileUploadListener="#{manterHabitoEspecie.upload}"
+                                  label="Foto" mode="advanced"/>
+                </ui:decorate>
+                <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                    <p:commandButton action="#{manterHabitoEspecie.edita}" value="Salvar" onsuccess="editaHabitoEspecie.hide()"/>
+                    <p:commandButton onclick="editaHabitoEspecie.hide()" value="Cancelar" immediate="true"/>
+                </ui:decorate>
+            </ui:decorate>
+        </h:form>
+    </p:dialog>
+</ui:composition>
+

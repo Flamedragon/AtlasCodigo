@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <p:dialog modal="true" header="Vincular Habitat" widgetVar="adicionarHabitat">
+        
+                <h:form id="formAddHab" enctype="multipart/form-data" >
+                            <ui:decorate template="/arquivos/modelos/form.xhtml">
+
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    
+                 
+                    
+                <h:outputText value="Habitat: " />  
+                <h:selectOneMenu value="#{especieView.habitatEscolhido}"  id="seleciona" >
+                    
+                    <f:selectItems value="#{manterHabitat.selectItens}"/>
+                   
+                </h:selectOneMenu>
+                
+                </ui:decorate>
+               
+                    
+                    
+                <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                    <p:commandButton action="#{especieView.adicionarHabitat}" value="Salvar" onsuccess="adicionarHabitat.hide()"/>
+                    <p:commandButton onclick="adicionarHabitat.hide()" value="Cancelar" immediate="true"/>
+                </ui:decorate>
+                            </ui:decorate>
+                
+                
+                </h:form>
+            
+        
+    </p:dialog>
+    
+</ui:composition>
+

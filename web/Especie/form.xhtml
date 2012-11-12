@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro de Especie </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:event listener="#{especieView.preLoad}" type="preRenderView"/>
+            </f:metadata>
+            <h1 align="center">Cadastro de Espécies</h1>
+            <h:form>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Gênero:</ui:define>
+                        <h:inputText value="#{especieView.entidade.genero}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Epíteto:</ui:define>
+                        <h:inputText value="#{especieView.entidade.epiteto}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Sub-espécie:</ui:define>
+                        <h:inputText value="#{especieView.entidade.subEspecie}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Variedade:</ui:define>
+                        <h:inputText value="#{especieView.entidade.variedade}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Sub-variedade:</ui:define>
+                        <h:inputText value="#{especieView.entidade.subVariedade}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Característica Ecológica:</ui:define>
+                        <h:inputText value="#{especieView.entidade.caracteristicaEcologica}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Forma:</ui:define>
+                        <h:inputText value="#{especieView.entidade.forma}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Sub-forma:</ui:define>
+                        <h:inputText value="#{especieView.entidade.subForma}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Autor:</ui:define>
+                        <h:inputText value="#{especieView.entidade.autor}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{especieView.salva}" value="Salvar"/>
+                        <h:commandButton action="../index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                </ui:decorate>
+                <br/><br/><br/>
+                <h:dataTable value="#{especieView.listagem}" var="especie">
+                    <h:column>
+                        <f:facet name="header">Nome &nbsp; &nbsp;</f:facet>
+                        <h:outputText value="#{especie.genero}"/> &nbsp; &nbsp;
+                        <h:outputText value="#{especie.epiteto}"/> &nbsp; &nbsp;
+                        <h:outputText value="#{especie.subEspecie}"/> &nbsp; &nbsp;
+                        <h:outputText value="#{especie.variedade}"/> &nbsp; &nbsp;
+                        <h:outputText value="#{especie.subVariedade}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Forma &nbsp; &nbsp;</f:facet>
+                        <h:outputText value="#{especie.forma}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Subforma &nbsp; &nbsp;</f:facet>
+                        <h:outputText value="#{especie.subForma}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Característica Ecológica: &nbsp; &nbsp;</f:facet>
+                        <h:outputText value="#{especie.caracteristicaEcologica}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Situação &nbsp; &nbsp;</f:facet>
+                        <h:outputText value="#{especie.situacao}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Edição</f:facet>
+                        <h:commandLink title="Clique p/ editar esta família" action="#{especieView.busca(especie.id)}" immediate="true">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ remover esta família" action="#{especieView.remove(especie.id)}" immediate="true">
+                            <h:graphicImage alt="Remover" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{especieView.envia(especie.id)}" immediate="true">
+                            <h:graphicImage alt="Enviar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ adicionar um detalhe para esta espécie" immediate="true"
+                                       action="#{especieView.novoDetalhe(especie.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ adicionar um estado para esta espécie" immediate="true"
+                                       action="#{especieView.novoEstado(especie.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ vincular um hábito para esta espécie" immediate="true"
+                                       action="#{especieView.novoHE(especie.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ adicionar um nome popular para esta espécie" immediate="true"
+                                       action="#{especieView.novoNome(especie.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                        <h:commandLink title="Clique p/ adicionar uma importância econômica para esta espécie" immediate="true"
+                                       action="#{especieView.novaImportancia(especie.id)}">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                        </h:commandLink>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

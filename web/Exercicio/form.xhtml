@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro de Exercicio </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:event listener="#{manterExercicio.preLoad}" type="preRenderView"/>
+            </f:metadata>
+            <h1 align="center">Cadastro de Exercicio</h1>
+            <h:form>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Título:</ui:define>
+                    <h:inputText value="#{manterExercicio.entidade.titulo}" required="true" requiredMessage="Campo obrigatório." />
+                </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Enunciado: </ui:define>
+                        <h:inputText value="#{manterExercicio.entidade.pergunta}"/>
+                    </ui:decorate>
+                    
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Visão:</ui:define>
+                        <h:selectOneRadio id="estado" value="#{manterExercicio.visaoEscolhida}" layout="pageDirection">
+                            <f:selectItems value="#{manterExercicio.visoes}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Elemento:</ui:define>
+                        <h:selectOneRadio id="elemento" value="#{manterExercicio.elementoEscolhido}" layout="pageDirection">
+                            <f:selectItems value="#{manterExercicio.elementos}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Grau de Complexidade:</ui:define>
+                        <h:selectOneRadio id="grau" value="#{manterExercicio.grauEscolhido}" layout="pageDirection">
+                            <f:selectItems value="#{manterExercicio.graus}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Tipo:</ui:define>
+                        <h:selectOneRadio id="tipoExercicio" value="#{manterExercicio.tipoEscolhido}" layout="pageDirection">
+                            <f:selectItems value="#{manterExercicio.tiposExercicios}"/>
+                        </h:selectOneRadio>
+                    </ui:decorate>
+                    
+                   
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{manterExercicio.salva}" value="Salvar"/>
+                        <h:commandButton action="../index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                    
+                    <br/><br/><br/>
+                </ui:decorate>
+                <h:dataTable  value="#{manterExercicio.listagem}" var="exercicio">
+                        <h:column>
+                            <f:facet name="header">Enunciado&nbsp;&nbsp;</f:facet>
+                            <h:outputText value="#{exercicio.pergunta}"/>
+                        </h:column>
+                        
+                        
+                        <h:column>
+                            <f:facet name="header">Edição</f:facet>
+                            <h:commandLink title="Clique p/ editar este exercício" action="#{manterExercicio.busca(exercicio.id)}" immediate="true">
+                                <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                            <h:commandLink title="Clique p/ remover este exercício" action="#{manterExercicio.remove(exercicio.id)}" immediate="true">
+                                <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                            <h:commandLink title="Clique p/ enviar este exercício para o professor" action="#{manterExercicio.envia(exercicio.id)}" immediate="true">
+                                <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>

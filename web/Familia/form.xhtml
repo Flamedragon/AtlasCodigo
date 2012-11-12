@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/arquivos/modelos/decorador.xhtml">
+
+    <ui:define name="titulo"> Cadastro de Família </ui:define>
+    <ui:define name="conteudo">
+        <f:view>
+            <f:metadata>
+                <f:event listener="#{manterFamilia.preLoad}" type="preRenderView"/>
+            </f:metadata>
+            <h1 align="center">Cadastro de Família</h1>
+            <h:form>
+                <ui:decorate template="/arquivos/modelos/form.xhtml">
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Nome: </ui:define>
+                        <h:inputText value="#{manterFamilia.entidade.nome}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome">Descrição: </ui:define>
+                        <h:inputTextarea value="#{manterFamilia.entidade.descricao}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                        <ui:define name="nome"> Característica econômicas: </ui:define>
+                        <h:inputText value="#{manterFamilia.entidade.importanciaEconomica}"/>
+                    </ui:decorate>
+                    <ui:decorate template="/arquivos/modelos/botoes.xhtml">
+                        <h:commandButton action="#{manterFamilia.salva}" value="Salvar"/>
+                        <h:commandButton action="../index.html?faces-redirect=true" value="Cancelar" immediate="true"/>
+                    </ui:decorate>
+                    <br/><br/><br/>
+                </ui:decorate>
+                    <h:dataTable id="tbDados" value="#{manterFamilia.listagem}" var="familia">
+                        <h:column>
+                            <f:facet name="header">Nome&nbsp;&nbsp;</f:facet>
+                            <h:outputText value="#{familia.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Descrição&nbsp;&nbsp;</f:facet>
+                            <h:outputText value="#{familia.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Característica econômicas&nbsp;&nbsp;</f:facet>
+                            <h:outputText value="#{familia.importanciaEconomica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Edição</f:facet>
+                            <h:commandLink title="Clique p/ editar esta família" action="#{manterFamilia.busca(familia.id)}" immediate="true">
+                                <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                            <h:commandLink title="Clique p/ remover esta família" action="#{manterFamilia.remove(familia.id)}" immediate="true">
+                                <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                            <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{manterFamilia.envia(familia.id)}" immediate="true">
+                                <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                            <h:commandLink title="Clique p/ adicionar um especie para esta família"
+                                       action="#{manterFamilia.novaEspecie(familia.id)}" immediate="true" >
+                                <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+            </h:form>
+        </f:view>
+    </ui:define>
+</ui:composition>
