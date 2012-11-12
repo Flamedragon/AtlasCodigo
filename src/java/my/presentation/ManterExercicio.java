@@ -18,7 +18,6 @@ import boundary.AbstractFacade;
 import boundary.AvaliacaoFacade;
 import boundary.ExercicioFacade;
 import boundary.ImagemFacade;
-import com.google.common.base.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

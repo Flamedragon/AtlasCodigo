@@ -26,7 +26,7 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean(name="manterTurma")
 @ViewScoped
-public class ManterTurma extends CRUDView<Turma, Byte>{
+public class ManterTurma extends CRUDView<Turma, Integer>{
 
     @EJB
     private TurmaFacade turmaDAO;

@@ -5,11 +5,6 @@
 
 package my.presentation;
 
-import Entity.Detalhe;
-import Entity.enumeracoes.Elemento;
-import Entity.Especie;
-import Entity.enumeracoes.Situacao;
-import Entity.enumeracoes.Visao;
 import Util.ServiceUtil;
 import boundary.AbstractFacade;
 import boundary.DetalheFacade;
@@ -23,7 +18,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.SelectItem;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
@@ -32,8 +26,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.UploadedFile;
 
 /**
  *

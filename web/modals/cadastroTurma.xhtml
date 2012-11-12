@@ -10,34 +10,37 @@
             <ui:decorate template="/arquivos/modelos/form.xhtml">
                
                 <ui:decorate template="/arquivos/modelos/campo.xhtml">
-                    <ui:define name="dtInicial">Data Inicial: </ui:define>
-                    <p:calendar value="#{manterTurma.entidade.dtInicial}" required="true" requiredMessage="Campo obrigatório." />  
+                    <h:outputLabel for="dtInicial" value="Data Inicial: "/>
+                    <p:calendar value="#{manterTurma.entidade.dtInicial}" id="dtInicial" required="true" requiredMessage="Campo obrigatório." />  
                     
                 </ui:decorate>
                 
                  <ui:decorate template="/arquivos/modelos/campo.xhtml">
-                    <ui:define name="dtFinal">Data Final: </ui:define>
-                    <p:calendar value="#{manterTurma.entidade.dtFinal}" required="true" requiredMessage="Campo obrigatório." />  
+                     <h:outputLabel for="dtFinal" value="Data Final:&nbsp; "/>
+                    <p:calendar value="#{manterTurma.entidade.dtFinal}" id="dtFinal" required="true" requiredMessage="Campo obrigatório." />  
                 </ui:decorate>
 
                 <ui:decorate template="/arquivos/modelos/campo.xhtml">
-                    <ui:define name="dtFinal">Data Final: </ui:define>
+                  
                     <p:selectOneRadio value="#{manterTurma.nivelEscolhido}">
+                        <p:ajax update="ano1,ano2" event="change"/>
                         <f:selectItems value="#{manterTurma.niveis}"/>
                     </p:selectOneRadio>  
                 </ui:decorate>
 
+                
                 <ui:decorate template="/arquivos/modelos/campo.xhtml">
                     <ui:define name="dtFinal">Data Final: </ui:define>
-                    <p:selectOneMenu  id="ano" value="#{manterTurma.anoEscolhido}" >
-                        <f:selectItems value="#{manterTurma.seriesFundamental}"/>
+                    <p:selectOneMenu id="ano1" disabled="#{!(manterTurma.nivelEscolhido.toString().equals('Fundamental'))}" value="#{manterTurma.anoEscolhido}">
+                        
+                        <f:selectItems value="#{manterTurma.getSeriesFundamental()}"/>
                     </p:selectOneMenu>
                 </ui:decorate>
 
                 <ui:decorate template="/arquivos/modelos/campo.xhtml">
                     <ui:define name="dtFinal">Data Final: </ui:define>
-                    <p:selectOneMenu  id="ano" value="#{manterTurma.anoEscolhido}" >
-                        <f:selectItems value="#{manterTurma.seriesMedio}"/>
+                    <p:selectOneMenu  id="ano2"  disabled="#{!(manterTurma.nivelEscolhido.toString().equals('Médio'))}" value="#{manterTurma.anoEscolhido}" >
+                        <f:selectItems value="#{manterTurma.getSeriesMedio()}"/>
                     </p:selectOneMenu>
                 </ui:decorate>
 
@@ -45,7 +48,7 @@
                 
                 
                 <ui:decorate template="/arquivos/modelos/botoes.xhtml">
-                    <p:commandButton action="#{manterTurma.salva()}" value="Salvar" onsuccess="cadastroAvaliacao.hide()"/>
+                    <p:commandButton action="#{manterTurma.salva()}" value="Salvar" onsuccess="cadastroTurma.hide()"/>
                     <p:commandButton onclick="cadastroTurma.hide()" value="Cancelar" immediate="true"/>
                 </ui:decorate>
             </ui:decorate>

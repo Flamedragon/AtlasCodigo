@@ -8,25 +8,26 @@
         <Node id="Bibliografia/form.xhtml" x="900" y="300" zoom="true"/>
         <Node id="Exercicio/listagem.xhtml" x="1150" y="750" zoom="true"/>
         <Node id="Detalhe/listagem.xhtml" x="1650" y="150" zoom="true"/>
-        <Node id="modals/cadastroExercicio.xhtml" x="150" y="1200" zoom="true"/>
         <Node id="modals/AdicionarImagem.xhtml" x="900" y="1050" zoom="true"/>
+        <Node id="modals/cadastroExercicio.xhtml" x="150" y="1200" zoom="true"/>
         <Node id="NomePopular/listagem.xhtml" x="1150" y="450" zoom="true"/>
         <Node id="Avaliacao/form.xhtml" x="1650" y="600" zoom="true"/>
         <Node id="Especie/infoDir.xhtml" x="400" y="1050" zoom="true"/>
-        <Node id="modals/cadastroNome.xhtml" x="1400" y="150" zoom="true"/>
         <Node id="modals/cadastroHabitoEspecie.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="modals/cadastroNome.xhtml" x="1400" y="150" zoom="true"/>
         <Node id="Familia/listagem.xhtml" x="1150" y="300" zoom="true"/>
         <Node id="Habitat/form.xhtml" x="1900" y="300" zoom="true"/>
         <Node id="Outros/contatos.xhtml" x="400" y="1350" zoom="true"/>
         <Node id="arquivos/modelos/botoes.xhtml" x="650" y="450" zoom="true"/>
         <Node id="Especie/perfil.xhtml" x="1400" y="450" zoom="true"/>
         <Node id="Exercicio/perfil.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="Outros/roteiros.xhtml" x="2650" y="150" zoom="true"/>
         <Node id="Habito/form.xhtml" x="150" y="450" zoom="true"/>
         <Node id="Especie/infoEsq.xhtml" x="400" y="600" zoom="true"/>
         <Node id="Estado/form.xhtml" x="400" y="300" zoom="true"/>
         <Node id="Habitat/listagem.xhtml" x="650" y="600" zoom="true"/>
-        <Node id="Agradecimento/listagem.xhtml" x="1900" y="450" zoom="true"/>
         <Node id="Importancia/form.xhtml" x="400" y="900" zoom="true"/>
+        <Node id="Agradecimento/listagem.xhtml" x="1900" y="450" zoom="true"/>
         <Node id="Especie/listagem.xhtml" x="1650" y="300" zoom="true"/>
         <Node id="modals/cadastroHabitat.xhtml" x="1400" y="600" zoom="true"/>
         <Node id="Agradecimento/form.xhtml" x="400" y="450" zoom="true"/>
@@ -35,6 +36,9 @@
         <Node id="Avaliacao/perfil.xhtml" x="150" y="1350" zoom="true"/>
         <Node id="modals/cadastroAvaliacao.xhtml" x="400" y="1200" zoom="true"/>
         <Node id="arquivos/modelos/form.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="Turma/form.xhtml" x="2400" y="300" zoom="true"/>
+        <Node id="modals/editaHabitoEspecie.xhtml" x="150" y="1500" zoom="true"/>
+        <Node id="modals/editaResposta.xhtml" x="2150" y="450" zoom="true"/>
         <Node id="Especie/form.xhtml" x="400" y="150" zoom="true"/>
         <Node id="Outros/faq.xhtml" x="650" y="1200" zoom="true"/>
         <Node id="arquivos/modelos/decorador.xhtml" x="150" y="600" zoom="true"/>
@@ -43,6 +47,7 @@
         <Node id="modals/cadastroEstado.xhtml" x="900" y="750" zoom="true"/>
         <Node id="modals/adicionarHabitat.xhtml" x="900" y="600" zoom="true"/>
         <Node id="arquivos/modelos/campo.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="modals/mudaFamilia.xhtml" x="1900" y="600" zoom="true"/>
         <Node id="Familia/form.xhtml" x="150" y="150" zoom="true"/>
         <Node id="Habitat/perfil.xhtml" x="1150" y="600" zoom="true"/>
         <Node id="Familia/perfil.xhtml" x="1900" y="150" zoom="true"/>
