@@ -14,16 +14,38 @@
             <h1>Roteiros didáticos</h1>
             
 
-            
+            <h:form id="roteiroForm">
             <h:panelGroup>
-                        <ui:repeat value="#{listagemView.avaliacoesEmEdicao}" var="turma">
-                            <h:link outcome="/Avaliacao/perfil.xhtml" title="Em edição" style="color: #000000;">
-                                <h:outputText value="#{turma.turma.ano_serie}" rendered="#{turma.turma!= null}"/>
-                                <h:outputText value="Avaliação sem turma - " rendered="#{turma.turma == null}"/>
-                                <f:param name="codigo" value="#{turma.id}"/>
-                            </h:link><br/>
-                        </ui:repeat><br/><br/>
+                <ui:repeat value="#{manterRoteiro.listagem}" var="roteiro">
+                            <h:outputLink value="/Atlas/arquivos/roteiros/#{roteiro.caminho}" title="#{roteiro.titulo}">
+                                <h:outputText value="#{roteiro.titulo}"/> <br/>
+                            </h:outputLink>    
+                           
+                        </ui:repeat>
+                <br/>
             </h:panelGroup>
+            <p:commandLink value="+ Roteiro" onclick="roteiro.show()" rendered="#{sessao.admin || sessao.monitor}"/>
+            </h:form>
+            
+            <p:dialog width="600" modal="true" header="Enviar Roteiro" widgetVar="roteiro" resizable="false">
+            <h:form>
+               
+                    <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <ui:define name="nome">Título:</ui:define>
+                        <h:inputText value="#{manterRoteiro.entidade.titulo}"/>
+                </ui:decorate>
+                
+                
+                    <p:fileUpload fileUploadListener="#{manterRoteiro.upload}"
+                                  label="Roteiro" mode="advanced" />
+               
+                    <p:commandButton value="Enviar" action="#{manterRoteiro.salva}" oncomplete="roteiro.hide()" update=":roteiroForm"/>
+              
+            </h:form>
+        </p:dialog>
+         
+            
+            
         </f:view>
     </ui:define>
 </ui:composition>

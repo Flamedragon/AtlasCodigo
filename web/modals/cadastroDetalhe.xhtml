@@ -30,7 +30,7 @@
                                   label="Foto" mode="advanced" />
                 </ui:decorate>
                 <ui:decorate template="/arquivos/modelos/botoes.xhtml">
-                    <p:commandButton action="#{manterDetalhe.enviar}" value="Salvar" onsuccess="cadastroDetalhe.hide()"/>
+                    <p:commandButton action="#{manterDetalhe.salva}" value="Salvar" onsuccess="cadastroDetalhe.hide()"/>
                     <p:commandButton onclick="cadastroDetalhe.hide()" value="Cancelar" immediate="true"/>
                 </ui:decorate>
             </ui:decorate>
