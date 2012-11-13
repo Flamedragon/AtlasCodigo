@@ -102,6 +102,19 @@ return items;
         getEntidade().setAno_serie(anoEscolhido);
     }
    
+    public List<SelectItem> getSelectItens(){
+        ArrayList habitatsSelects = new ArrayList<SelectItem>();
+        
+         List lista = super.getListagem();
+         for(int i = 0; i < lista.size(); i++){
+             Turma h = (Turma)lista.get(i);
+             
+             // Adicionar ao add instituiçao quando completado;
+             habitatsSelects.add(new SelectItem(h.getId(), h.getAno_serie().toString() + " do Ensino " + (h.getNivel() == null?"":h.getNivel().toString()) +
+                                                                              " do(a) professor(a) " + (h.getResponsavel().getNome() == null?" nao identificado ":h.getResponsavel().getNome())
+                                                                              ));}
+         return habitatsSelects;
+     }
     
       
      static{

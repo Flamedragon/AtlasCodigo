@@ -10,15 +10,24 @@
             <ui:decorate template="/arquivos/modelos/form.xhtml">
                
                 <ui:decorate template="/arquivos/modelos/campo.xhtml">
-                    <ui:define name="dtInicial">Data Inicial: </ui:define>
-                    <p:calendar value="#{manterAvaliacao.entidade.dtInicial}" required="true" requiredMessage="Campo obrigatório." />  
+                    <h:outputLabel for="dtInicialAval" value="Data Inicial: "/>
+                    <p:calendar value="#{manterAvaliacao.entidade.dtInicial}" id="dtInicialAval" required="true" requiredMessage="Campo obrigatório." />  
                     
                 </ui:decorate>
                 
                  <ui:decorate template="/arquivos/modelos/campo.xhtml">
-                    <ui:define name="dtFinal">Data Final: </ui:define>
-                    <p:calendar value="#{manterAvaliacao.entidade.dtFinal}" required="true" requiredMessage="Campo obrigatório." />  
+                     <h:outputLabel for="dtFinalAval" value="Data Final:&nbsp; "/>
+                     <p:calendar value="#{manterAvaliacao.entidade.dtFinal}" id="dtFinalAval" required="true" requiredMessage="Campo obrigatório." />  
                 </ui:decorate>
+                
+                <ui:decorate template="/arquivos/modelos/campo.xhtml">
+                    <h:outputText value="Habitat: " />  
+                    <h:selectOneMenu value="#{manterAvaliacao.turmaEscolhida}"  id="select" >
+                        <f:selectItems value="#{manterTurma.selectItens}"/>
+                    </h:selectOneMenu>
+                
+                </ui:decorate>
+                
                 
                 <ui:decorate template="/arquivos/modelos/botoes.xhtml">
                     <p:commandButton action="#{manterAvaliacao.salva()}" value="Salvar" onsuccess="cadastroAvaliacao.hide()"/>

@@ -7,12 +7,14 @@ package my.presentation;
 
 import Entity.Avaliacao;
 import Entity.Exercicio;
+import Entity.Turma;
 import Entity.enumeracoes.Situacao;
 import Util.ServiceUtil;
 import boundary.AbstractFacade;
 import boundary.EspecieFacade;
 import boundary.AvaliacaoFacade;
 import boundary.ExercicioFacade;
+import boundary.TurmaFacade;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -35,8 +37,13 @@ public class ManterAvaliacao extends CRUDView<Avaliacao, Integer>{
     @EJB
     private ExercicioFacade exercicioDAO;
     
+    @EJB
+    private TurmaFacade turmaDAO;
+    
      @ManagedProperty("#{manterExercicio}")
     private ManterExercicio manterExercicio;
+     
+    private Integer turmaEscolhida; 
 
     public ManterAvaliacao() {
     }
@@ -89,6 +96,18 @@ public class ManterAvaliacao extends CRUDView<Avaliacao, Integer>{
     public void setManterExercicio(ManterExercicio manterExercicio) {
         this.manterExercicio = manterExercicio;
     }
+
+    public Integer getTurmaEscolhida() {
+        return turmaEscolhida;
+    }
+
+    public void setTurmaEscolhida(Integer turmaEscolhida) {
+        this.turmaEscolhida = turmaEscolhida;
+        Turma t = turmaDAO.find(turmaEscolhida);
+        getEntidade().setTurma(t);
+    }
+    
+    
 
     public List<SelectItem> getSelectItens(){
         ArrayList avaliacoesSelects = new ArrayList<SelectItem>();
