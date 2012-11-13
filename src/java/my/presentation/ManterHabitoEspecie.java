@@ -144,7 +144,7 @@ public class ManterHabitoEspecie extends CRUDView<HabitoEspecie, Long>{
        }
         else try{
                 
-                getEntidade().remover();
+                getEntidade().remover(getEntidade().getCaminho());
                 getEntidade().salvar(img.getContents());
                 ServiceUtil.addInfoMessage("Imagem salva com sucesso","");
                 Habito h = habitoFacade.find(habito);
@@ -162,7 +162,9 @@ public class ManterHabitoEspecie extends CRUDView<HabitoEspecie, Long>{
     
     @Override
     public void remove(Long codigo){
-        getEntidade().remover();
+        
+        HabitoEspecie h = habitoEspecieFacade.find(codigo);
+        getEntidade().remover(h.getCaminho());
         super.remove(codigo);
     }
 

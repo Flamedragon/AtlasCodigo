@@ -74,8 +74,8 @@ public abstract class Imagem implements Serializable{
         
     }
 
-    public void remover(){
-        File file = new File(ServiceUtil.getRealPath("/arquivos/fotos/")+ "/" + id + "." + formato);
+    public void remover(String caminho){
+        File file = new File(ServiceUtil.getRealPath("/arquivos/fotos/")+ "/" + caminho);
         file.delete();
     }
 

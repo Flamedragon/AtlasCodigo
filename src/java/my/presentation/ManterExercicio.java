@@ -277,7 +277,8 @@ return items;
         public void remove(){   
         
         if(getEntidade().getId()!=null){
-            getEntidade().remover();
+            
+            getEntidade().remover(getEntidade().getCaminho());
             super.remove(getEntidade().getId());
             ServiceUtil.redirect("/Atlas/Exercicio/listagem.html");
         }

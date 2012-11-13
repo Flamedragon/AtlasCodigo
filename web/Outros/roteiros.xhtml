@@ -40,19 +40,21 @@
             <p:commandLink value="+ Roteiro" onclick="roteiro.show()" rendered="#{sessao.admin || sessao.monitor}"/>
             </h:form>
             
-            <p:dialog width="600" modal="true" header="Enviar Roteiro" widgetVar="roteiro" resizable="false">
+            <p:dialog  modal="true" header="Enviar Roteiro" widgetVar="roteiro" resizable="true">
             <h:form>
                
                     <ui:decorate template="/arquivos/modelos/campo.xhtml">
                     <ui:define name="nome">Título:</ui:define>
-                        <h:inputText value="#{manterRoteiro.entidade.titulo}"/>
+                        <p:inputText value="#{manterRoteiro.entidade.titulo}"/><br/>
                 </ui:decorate>
-                
+                <br/>
+             
                 
                     <p:fileUpload fileUploadListener="#{manterRoteiro.upload}"
-                                  label="Roteiro" mode="advanced" />
+                                  label="Roteiro" mode="advanced" /> <br/>
                
                     <p:commandButton value="Enviar" action="#{manterRoteiro.salva}" oncomplete="roteiro.hide()" update=":roteiroForm"/>
+                    <p:commandButton onclick="roteiro.hide()" value="Cancelar" immediate="true"/>
               
             </h:form>
         </p:dialog>
