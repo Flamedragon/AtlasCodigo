@@ -15,12 +15,15 @@
             
 
             
-            <center>
-                
-                
-                
-            </center>
-            
+            <h:panelGroup>
+                        <ui:repeat value="#{listagemView.avaliacoesEmEdicao}" var="turma">
+                            <h:link outcome="/Avaliacao/perfil.xhtml" title="Em edição" style="color: #000000;">
+                                <h:outputText value="#{turma.turma.ano_serie}" rendered="#{turma.turma!= null}"/>
+                                <h:outputText value="Avaliação sem turma - " rendered="#{turma.turma == null}"/>
+                                <f:param name="codigo" value="#{turma.id}"/>
+                            </h:link><br/>
+                        </ui:repeat><br/><br/>
+            </h:panelGroup>
         </f:view>
     </ui:define>
 </ui:composition>

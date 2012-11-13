@@ -11,9 +11,12 @@ import Util.AppRedirectTo;
 import Util.ServiceUtil;
 import boundary.AbstractFacade;
 import boundary.FamiliaFacade;
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.util.List;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -91,8 +94,30 @@ public class ManterFamilia extends CRUDView<Familia, Integer>{
         return AppRedirectTo.ESPECIE_FORM;
     }
     
+    public List<SelectItem> getSelectItens(){
+        ArrayList habitatsSelects = new ArrayList<SelectItem>();
+        
+         List lista = super.getListagem();
+         for(int i = 0; i < lista.size(); i++){
+             Familia h = (Familia)lista.get(i);            
+             habitatsSelects.add(new SelectItem(h.getId(),h.getNome()));}
+         return habitatsSelects;
+     }
+    
     public void preRender(int id){
         busca(id);
         if(getEntidade()==null) ServiceUtil.redirect("/Atlas/");
     }
+    
+    public List<Familia> completeFamilia(String query) {  
+        List<Familia> suggestions = new ArrayList<Familia>();  
+        List<Familia> lista = this.getListagem();
+        
+        for(Familia p : lista) {  
+            if(p.getNome().startsWith(query))  
+                suggestions.add(p);  
+        }  
+          
+        return suggestions;  
+    }  
 }

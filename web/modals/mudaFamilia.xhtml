@@ -8,7 +8,7 @@
     <p:dialog modal="true" header="Mudar Familia" widgetVar="mudaFamilia" resizable="false" minWidth="600" >
         <h:form>
             
-            
+            <p:autoComplete completeMethod="#{manterFamilia.completeFamilia}" var="f" value="#{especieView.entidade.familia}" itemValue="#{f}" itemLabel="#{f.nome}"/>
             
                 <ui:decorate template="/arquivos/modelos/botoes.xhtml">
                     <p:commandButton action="#{especieView.salvaEd()}" value="Salvar"  onsuccess="mudaFamilia.hide()"/>
