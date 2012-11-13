@@ -16,12 +16,25 @@
 
             <h:form id="roteiroForm">
             <h:panelGroup>
-                <ui:repeat value="#{manterRoteiro.listagem}" var="roteiro">
-                            <h:outputLink value="/Atlas/arquivos/roteiros/#{roteiro.caminho}" title="#{roteiro.titulo}">
+               
+                            
+                         <h:dataTable value="#{manterRoteiro.listagem}" var="roteiro">
+                    <h:column>
+                       
+                        <h:outputLink value="/Atlas/arquivos/roteiros/#{roteiro.caminho}" title="#{roteiro.titulo}">
                                 <h:outputText value="#{roteiro.titulo}"/> <br/>
                             </h:outputLink>    
-                           
-                        </ui:repeat>
+                    </h:column> 
+                    <h:column rendered="#{sessao.admin || sessao.monitor}">
+                        <f:facet name="header"></f:facet>
+                        
+                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterRoteiro.remove(roteiro.id)}" update=":roteiroForm">
+                            <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                        </p:commandLink>
+                      
+                    </h:column>
+    </h:dataTable>  
+                        
                 <br/>
             </h:panelGroup>
             <p:commandLink value="+ Roteiro" onclick="roteiro.show()" rendered="#{sessao.admin || sessao.monitor}"/>

@@ -75,7 +75,7 @@ public class Roteiro implements Serializable{
     }
 
     public void remover(){
-        File file = new File(ServiceUtil.getRealPath("/arquivos/fotos/")+ "/" + id + "." + formato);
+        File file = new File(ServiceUtil.getRealPath("/arquivos/roteiros/")+ "/" + this.caminho);
         file.delete();
     }
 
