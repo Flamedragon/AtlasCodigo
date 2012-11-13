@@ -115,7 +115,7 @@ public class ManterAvaliacao extends CRUDView<Avaliacao, Integer>{
          List lista = super.getListagem();
          for(int i = 0; i < lista.size(); i++){
              Avaliacao h = (Avaliacao)lista.get(i);
-             avaliacoesSelects.add(new SelectItem(h.getId(), h.getDtInicial().toString()));}
+             avaliacoesSelects.add(new SelectItem(h.getId(), h.toString()));}
          return avaliacoesSelects;
      }
     

@@ -101,6 +101,12 @@ return items;
         this.anoEscolhido = anoEscolhido;
         getEntidade().setAno_serie(anoEscolhido);
     }
+    
+    @Override
+   public String toString(){
+     return getEntidade().getAno_serie().toString() + " do Ensino " + (getEntidade().getNivel() == null?"":getEntidade().getNivel().toString()) +
+                                                                              " do(a) professor(a) " + (getEntidade().getResponsavel().getNome() == null?" nao identificado ":getEntidade().getResponsavel().getNome());
+    }
    
     public List<SelectItem> getSelectItens(){
         ArrayList habitatsSelects = new ArrayList<SelectItem>();

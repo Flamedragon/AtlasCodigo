@@ -6,6 +6,9 @@ package Entity;
 
 import Entity.enumeracoes.Situacao;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -41,6 +44,8 @@ public class Avaliacao implements Serializable {
     private Date dtFinal;
     
     private Situacao situacao;
+    
+    
     
     @ManyToOne
     private Turma turma;
@@ -132,7 +137,8 @@ public class Avaliacao implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Avaliacao[ id=" + id + " ]";
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return ("Avaliaçao de " + turma.toString() + " de: " + dateFormat.format(dtInicial) + " a " + dateFormat.format(dtFinal));
     }
     
 }

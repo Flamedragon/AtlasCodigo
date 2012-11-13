@@ -13,7 +13,7 @@
                 
                 <h:outputText value="Avaliacao: " />  
                 <p:selectOneMenu value="#{manterExercicio.avaliacaoEscolhida}" effect="fade" >   
-                    <f:selectItems value="#{manterAvaliacao.selectItens}" var="avaliacao" itemLabel="#{avaliacao.dtInicial.toString()}" itemValue="#{avaliacao}"/>  
+                    <f:selectItems value="#{manterAvaliacao.selectItens}" var="avaliacao" itemLabel="#{avaliacao.toString()}" itemValue="#{avaliacao}"/>  
                 </p:selectOneMenu>
                 </ui:decorate>
                 <ui:decorate template="/arquivos/modelos/botoes.xhtml">

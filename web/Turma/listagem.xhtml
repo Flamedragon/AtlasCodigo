@@ -5,7 +5,7 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 template="/arquivos/modelos/decorador.xhtml">
 
-    <ui:define name="titulo"> Avaliacaos </ui:define>
+    <ui:define name="titulo"> Turmas </ui:define>
     <ui:define name="conteudo">
         <f:view>
             <h1 align="center"></h1>
@@ -14,7 +14,7 @@
                     <h:panelGroup rendered="#{sessao.admin || sessao.monitor || sessao.aluno}">
                         <ui:repeat value="#{listagemView.avaliacoesEmEdicao}" var="turma">
                             <h:link outcome="/Avaliacao/perfil.xhtml" title="Em edição" style="color: #000000;">
-                                <h:outputText value="#{turma.getTurma().toString()}" rendered="#{turma.turma!= null}"/>
+                                <h:outputText value="#{turma.turma.ano_serie}" rendered="#{turma.turma!= null}"/>
                                 <h:outputText value="Avaliação sem turma - " rendered="#{turma.turma == null}"/>
                                 <f:param name="codigo" value="#{turma.id}"/>
                             </h:link><br/>
@@ -22,7 +22,7 @@
                         
                         <ui:repeat value="#{listagemView.avaliacoesPendentes}" var="turma">
                             <h:link outcome="/Avaliacao/perfil.xhtml" title="Não publicada" style="color: #FF0000;">
-                                <h:outputText value="#{turma.getTurma().toString()}" rendered="#{turma.turma!= null}"/>
+                                <h:outputText value="#{turma.turma.ano_serie}" rendered="#{turma.turma!= null}"/>
                                 <h:outputText value="Avaliação sem turma - " rendered="#{turma.turma == null}"/>
                                 <f:param name="codigo" value="#{turma.id}"/>
                             </h:link><br/>
@@ -31,7 +31,7 @@
                     
                     <ui:repeat value="#{listagemView.avaliacoesPublicados}" var="turma">
                         <h:link outcome="/Avaliacao/perfil.xhtml" title="Clique para ver a descrição completa desta família" style="color: #FFFFFF;">
-                                <h:outputText value="#{turma.getTurma().toString()}" rendered="#{turma.turma!= null}"/>
+                                <h:outputText value="#{turma.turma.ano_serie}" rendered="#{turma.turma!= null}"/>
                                 <h:outputText value="Avaliação sem turma -" rendered="#{turma.turma == null}"/>
                                 <f:param name="codigo" value="#{turma.id}"/>
                         </h:link><br/>

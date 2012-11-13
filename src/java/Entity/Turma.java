@@ -151,7 +151,8 @@ public class Turma implements Serializable {
 
     @Override
     public String toString() {
-        return "Entity.Turma[ id=" + id + " ]";
+        return getAno_serie().toString() + " do Ensino " + (getNivel() == null?"":getNivel().toString()) +
+                                                                              " do(a) professor(a) " + (getResponsavel().getNome() == null?" nao identificado ":getResponsavel().getNome());
     }
     
 }
