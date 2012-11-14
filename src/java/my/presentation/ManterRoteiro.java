@@ -149,8 +149,8 @@ public class ManterRoteiro extends CRUDView<Roteiro, Integer>{
     @Override
     public void remove(Integer codigo){
         
-        Roteiro r = roteiroDAO.find(codigo);
-        getEntidade().remover(r.getCaminho());
+        
+        getEntidade().remover();
         super.remove(codigo);
         
     }

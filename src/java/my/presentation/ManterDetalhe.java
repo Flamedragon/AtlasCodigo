@@ -184,8 +184,7 @@ public class ManterDetalhe extends CRUDView<Detalhe, Long>{
         if(getEntidade().getVisao()==Visao.MORFOLOGICA) {
             perfilEspecieView.removeMorfologico(getEntidade());}
         else { perfilEspecieView.removeMorfologico(getEntidade());}
-        Detalhe d = detalheDAO.find(codigo);
-        getEntidade().remover(d.getCaminho());
+        getEntidade().remover();
         super.remove(codigo);
         
     }

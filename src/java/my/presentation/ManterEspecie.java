@@ -176,10 +176,10 @@ public class ManterEspecie extends CRUDView<Especie, Long>{
         if(getEntidade().getId()!=null){
             if(!getEntidade().getDetalhes().isEmpty())                      //deleta imagens de detalhes da pasta
                 for(Detalhe detalhe:getEntidade().getDetalhes())
-                    detalhe.remover(detalhe.getCaminho());
+                    detalhe.remover();
             if(!getEntidade().getHabitoEspecies().isEmpty())                //detela imagens de hábitos da pasta
                 for(HabitoEspecie he :getEntidade().getHabitoEspecies())
-                    he.remover(he.getCaminho());
+                    he.remover();
             super.remove(getEntidade().getId());
             ServiceUtil.redirect("/Atlas/Especie/listagem");
         }
