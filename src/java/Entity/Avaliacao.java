@@ -138,7 +138,7 @@ public class Avaliacao implements Serializable {
     @Override
     public String toString() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return ("Avaliaçao de " + turma == null?"Turma nao alocada":turma.toString() + " de: " + dateFormat.format(dtInicial) + " a " + dateFormat.format(dtFinal));
+        return ("Avaliaçao de " + ((turma == null)?"Turma nao alocada":turma.toString()) + " de: " + dateFormat.format(dtInicial) + " a " + dateFormat.format(dtFinal));
     }
     
 }
