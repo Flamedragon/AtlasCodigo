@@ -6,15 +6,20 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
     <p:dialog modal="true" header="Mudar Familia" widgetVar="mudaFamilia" resizable="false" minWidth="600" >
-        <h:form>
+        
+        <h:form id="formFAM1">
+            <p:autoComplete value="#{especieView.fEscolhida}" converter="#{familiaConverter}" 
+                            completeMethod="#{manterFamilia.completeFamilia}" var="f" itemValue="#{f}" itemLabel="#{f.nome}" forceSelection="true"/>
+ 
             
-            <p:autoComplete completeMethod="#{manterFamilia.completeFamilia}" var="f" value="#{especieView.entidade.familia}" itemValue="#{f}" itemLabel="#{f.nome}"/>
+         
             
-                <ui:decorate template="/arquivos/modelos/botoes.xhtml">
-                    <p:commandButton action="#{especieView.salvaEd()}" value="Salvar"  onsuccess="mudaFamilia.hide()"/>
+   
+
+            <p:commandButton action="#{especieView.editaFamilia()}" value="Salvar" onsuccess="mudaFamilia.hide()"  />
                     <p:commandButton onclick="mudaFamilia.hide()" value="Cancelar" immediate="true"/>
-                </ui:decorate>
-           
-        </h:form>
+         </h:form>    
+     
+       
     </p:dialog>
 </ui:composition>

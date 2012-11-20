@@ -145,9 +145,7 @@
             <h:outputText value="#{perfilEspecieView.entidade.familia.nome}"/>
             <f:param name="codigo" value="#{perfilEspecieView.entidade.familia.id}"/>
         </h:link>
-        <p:commandLink title="Clique p/ editar este detalhe" action="#{manterEspecie.busca(perfilEspecieView.especie)}" oncomplete="mudaFamilia.show()" >
-                            <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
-        </p:commandLink>
+       
         </h:form>
     </h:panelGroup>
 

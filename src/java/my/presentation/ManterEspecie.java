@@ -54,6 +54,7 @@ public class ManterEspecie extends CRUDView<Especie, Long>{
     @ManagedProperty("#{manterHabitat}")
     private ManterHabitat manterHabitat;
     
+    private Familia fEscolhida;
     
 
     public ManterEspecie() {
@@ -117,10 +118,10 @@ public class ManterEspecie extends CRUDView<Especie, Long>{
         limpa();
     }
     
-    public void editaFamilia (Familia fNova){
+    public void editaFamilia (){
     
     getEntidade().setSituacao(Situacao.EDICAO);
-    getEntidade().setFamilia(fNova);
+    getEntidade().setFamilia(fEscolhida);
     super.edita();
     limpa();
     atualizaListagem();
@@ -224,8 +225,17 @@ public class ManterEspecie extends CRUDView<Especie, Long>{
     
     public List<Habitat> getHabitatsTotais(){
     return manterHabitat.getListagem();}
+
+    public Familia getfEscolhida() {
+        return fEscolhida;
+    }
+
+    public void setfEscolhida(Familia fEscolhida) {
+        this.fEscolhida = fEscolhida;
+    }
+
     
-	
+ 
     
     
     

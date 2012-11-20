@@ -12,10 +12,12 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+    
     <converter>
     <converter-id>habitatConverter</converter-id>
     <converter-class>Util.HabitatConverter</converter-class>
 </converter>
+
     <managed-bean>
         <managed-bean-name>newJSFManagedBean</managed-bean-name>
         <managed-bean-class>my.presentation.NewJSFManagedBean</managed-bean-class>
