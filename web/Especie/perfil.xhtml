@@ -22,7 +22,7 @@
                     <p:menuitem value="Solicitar Publicação" action="#{especieView.envia(perfilEspecieView.especie)}" rendered="#{(sessao.admin or sessao.monitor) and perfilEspecieView.entidade.situacao.edicao}"/>
                     <p:menuitem value="Editar espécie" onclick="editaEspecie.show()"/>
                     <p:menuitem value="Mudar familia" onclick="mudaFamilia.show()"/>
-                    <p:menuitem value="Excluir espécie" action="#{especieView.remove(perfilEspecieView.especie)}"/>
+                    <p:menuitem value="Excluir espécie" onclick="telaConfirmacao.show()"/>
                     <p:menuitem value="Adicionar Detalhe" onclick="cadastroDetalhe.show()" update=":perfilDir,:formGaleria:galeria"/>
                     <p:menuitem value="Adicionar Estado" onclick="cadastroEstado.show()" update=":perfilEsq"/>
                     <p:menuitem value="Adicionar Nome Popular" onclick="cadastroNome.show()" update=":perfilEsq"/>
@@ -80,6 +80,16 @@
                 
                 
             </h:panelGroup>
+            
+    <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+        <h:form enctype="multipart/form-data">
+            <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                    <p:commandButton action="#{especieView.remove(perfilEspecieView.especie)}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                    <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+        </h:form>
+    </p:dialog>
+            
+            
         </f:view>
     </ui:define>
     <ui:define name="modals">

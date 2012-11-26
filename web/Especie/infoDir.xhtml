@@ -23,8 +23,15 @@
                         <p:commandLink title="Clique p/ editar este detalhe" action="#{manterHabitoEspecie.busca(habito.id)}" oncomplete="editaHabitoEspecie.show()" >
                             <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
                         </p:commandLink>
-                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterHabitoEspecie.remove(habito.id)}" update=":formInfDir1">
+                        <p:commandLink title="Clique p/ remover esta detalhe" onclick="telaConfirmacaoHabito.show()" update=":formInfDir1">
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                                <p:commandButton action="#{manterHabitoEspecie.remove(habito.id)}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog>
+                            
                         </p:commandLink>
                         <h:commandLink title="Clique p/ enviar esta detalhe para o professor" action="#{manterHabito.envia(habito.id)}">
                             <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
@@ -47,8 +54,18 @@
                         <p:commandLink title="Clique p/ editar este detalhe" action="#{manterDetalhe.busca(detalhe.id)}" oncomplete="cadastroDetalhe.show()" >
                             <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
                         </p:commandLink>
-                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterDetalhe.remove(detalhe.id)}" update=":formInfDir1">
+                        <p:commandLink title="Clique p/ remover esta detalhe" onclick="telaConfirmacao.show()" update=":formInfDir1">
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                           
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacaoDetalhe" resizable="true" minWidth="600">         
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />                 
+                                <p:commandButton action="#{manterDetalhe.remove(detalhe.id)}" value="Sim" onsuccess="telaConfirmacao.hide()"/>                  
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog>    
+            
+                            
+                            
+                            
                         </p:commandLink>
                         <h:commandLink title="Clique p/ enviar esta detalhe para o professor" action="#{manterDetalhe.envia(detalhe.id)}">
                             <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
@@ -56,6 +73,9 @@
                     </h:column>
     </h:dataTable>
     </h:panelGroup>
+            
+    
+            
         </h:form>
         <h:form id="formInfDir3">
     <h:panelGroup layout="block" styleClass="campo" id="morfologia">
@@ -71,8 +91,16 @@
                         <p:commandLink title="Clique p/ editar esta família" action="#{manterDetalhe.busca(detalhe.id)}" oncomplete="cadastroDetalhe.show()" >
                             <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
                         </p:commandLink>
-                        <p:commandLink title="Clique p/ remover esta família" action="#{manterDetalhe.remove(detalhe.id)}" update=":formInfDir3">
+                        <p:commandLink title="Clique p/ remover esta família" onclick="telaConfirmacaoDetalhe.show()" update=":formInfDir3">
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">         
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />                 
+                                <p:commandButton action="#{manterDetalhe.remove(detalhe.id)}" value="Sim" onsuccess="telaConfirmacao.hide()"/>                  
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog> 
+                            
+                            
                         </p:commandLink>
                         <h:commandLink title="Clique p/ enviar esta família para o professor" action="#{manterDetalhe.envia(detalhe.id)}">
                             <h:graphicImage alt="Editar" url="/arquivos/images/accept.png" width="20px"></h:graphicImage>
@@ -82,6 +110,11 @@
     </h:panelGroup>
     </h:form>
     
+        
+        
+        
+   
+        
     </f:view>    
      
 </ui:composition>

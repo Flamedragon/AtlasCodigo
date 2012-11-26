@@ -37,8 +37,15 @@
                         <p:commandLink title="Clique p/ editar este detalhe" action="#{manterNomePopular.busca(apelido.id)}" oncomplete="cadastroNome.show()"  >
                             <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
                         </p:commandLink>
-                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterNomePopular.remove(apelido.id)}" update=":formInfoEsq1">
+                        <p:commandLink title="Clique p/ remover esta detalhe" onclick="telaConfirmacao.show()" >
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                                <p:commandButton action="#{manterNomePopular.remove(apelido.id)}" value="Sim" onsuccess="telaConfirmacao.hide()" update=":formInfoEsq1"/>
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog>
+                            
                         </p:commandLink>
                         
                     </h:column>
@@ -98,8 +105,15 @@
                     <h:column rendered="#{sessao.admin || sessao.monitor}">
                         <f:facet name="header"></f:facet>
                         
-                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{especieView.removeHabitat(perfilEspecieView.entidade.habitats.indexOf(habitat))}" update=":formInfEsq2:Habitat">
+                        <p:commandLink title="Clique p/ remover esta detalhe" onclick="telaConfirmacao.show()" update=":formInfEsq2:Habitat">
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                                <p:commandButton action="#{especieView.removeHabitat(perfilEspecieView.entidade.habitats.indexOf(habitat))}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog>    
+                            
                         </p:commandLink>
                         
                     </h:column>
@@ -126,8 +140,15 @@
                         <p:commandLink title="Clique p/ editar este detalhe" action="#{manterEstadoDeConservacao.busca(estados.id)}" oncomplete="cadastroEstado.show()" >
                             <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
                         </p:commandLink>
-                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterEstadoDeConservacao.remove(estados.id)}" update=":formInfEsq3:estados">
+                        <p:commandLink title="Clique p/ remover esta detalhe" onclick="telaConfirmacao" update=":formInfEsq3:estados">
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                                <p:commandButton action="#{manterEstadoDeConservacao.remove(estados.id)}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog>
+                            
                         </p:commandLink>
                         
                     </h:column>
@@ -176,8 +197,15 @@
                         <p:commandLink title="Clique p/ editar este detalhe" action="#{manterImportanciaEconomica.busca(importancia.id)}" oncomplete="cadastroImportancia.show()" >
                             <h:graphicImage alt="Editar" url="/arquivos/images/comment.png" width="20px"></h:graphicImage>
                         </p:commandLink>
-                        <p:commandLink title="Clique p/ remover esta detalhe" action="#{manterImportanciaEconomica.remove(importancia.id)}" update=":importancias">
+                        <p:commandLink title="Clique p/ remover esta detalhe" onclick="telaConfirmacao.show()" update=":importancias">
                             <h:graphicImage alt="Editar" url="/arquivos/images/delete.png" width="20px"></h:graphicImage>
+                            
+                            <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+                                <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                                <p:commandButton action="#{manterImportanciaEconomica.remove(importancia.id)}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                                <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+                            </p:dialog>
+                            
                         </p:commandLink>
                         
                     </h:column>

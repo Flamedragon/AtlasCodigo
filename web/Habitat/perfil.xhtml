@@ -19,7 +19,7 @@
                     <p:menuitem value="Publicar" action="#{manterHabitat.publicar}" rendered="#{sessao.admin and (manterHabitat.entidade.situacao.pendente || manterHabitat.entidade.situacao.edicao)}"/>
                     <p:menuitem value="Enviar" action="#{manterHabitat.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterHabitat.entidade.situacao.edicao}"/>
                     <p:menuitem value="Editar" onclick="cadastroHabitat.show()"  update=":Hnome,:Hdescricao"/>
-                    <p:menuitem value="Excluir" action="#{manterHabitat.remove}"/>
+                    <p:menuitem value="Excluir" onclick="telaConfirmacao.show()"/>
                 </p:contextMenu>
             </h:form>
            
@@ -28,7 +28,17 @@
                 <b><h:outputText styleClass="titulo" value="Descrição: "/></b><br/>
                 <p:spacer width="30" height="2"/> <h:outputText value="#{manterHabitat.entidade.descricao}"/>
             </h:panelGroup>
-           
+         
+            
+             <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+        <h:form enctype="multipart/form-data">
+            <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                    <p:commandButton action="#{manterHabitat.remove}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                    <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+        </h:form>
+    </p:dialog>    
+            
+            
         </f:view>
         <ui:include src="/modals/cadastroHabitat.xhtml"/>
     </ui:define>

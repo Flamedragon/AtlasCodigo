@@ -116,9 +116,9 @@ return items;
              Turma h = (Turma)lista.get(i);
              
              // Adicionar ao add instituiçao quando completado;
-             habitatsSelects.add(new SelectItem(h.getId(), h.getAno_serie().toString() + " do Ensino " + (h.getNivel() == null?"":h.getNivel().toString()) +
+             habitatsSelects.add(new SelectItem(h.getId(), /*(h.getAno_serie()==null?"N/A":h.getAno_serie().toString()) + " do Ensino " + (h.getNivel() == null?"":h.getNivel().toString()) +
                                                                               " do(a) professor(a) " + (h.getResponsavel().getNome() == null?" nao identificado ":h.getResponsavel().getNome())
-                                                                              ));}
+                                                                              */ h.getId().toString()));}
          return habitatsSelects;
      }
     

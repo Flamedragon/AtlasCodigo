@@ -20,7 +20,7 @@
                     <p:menuitem value="Publicar" action="#{manterExercicio.publicar}" rendered="#{sessao.admin and (manterExercicio.entidade.situacao.pendente || manterExercicio.entidade.situacao.edicao)}"/>
                     <p:menuitem value="Enviar" action="#{manterExercicio.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterExercicio.entidade.situacao.edicao}"/>
                     <p:menuitem value="Editar" onclick="cadastroExercicio.show()" update="formExercicios"/>
-                    <p:menuitem value="Excluir" action="#{manterExercicio.remove}"/>
+                    <p:menuitem value="Excluir" onclick="telaConfirmacao.show()"/>
                     <p:menuitem value="Adicionar Resposta" oncomplete="cadastroResposta.show()" />
                     <p:menuitem value="Adicionar à avaliação:" oncomplete="adicionarAvaliacao.show()"/>
                     <p:menuitem value="Editar Resposta Selecionada" action="#{manterResposta.busca(manterExercicio.respostaEscolhida)}" oncomplete="editaResposta.show()" update="formExercicios"/>
@@ -72,7 +72,19 @@
             
             
             </h:form>       
-                
+            
+        
+        <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+        <h:form enctype="multipart/form-data">
+            <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                    <p:commandButton action="#{manterExercicio.remove}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                    <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+        </h:form>
+    </p:dialog>
+        
+        
+        
+        
 </f:view>        
         
     </ui:define>

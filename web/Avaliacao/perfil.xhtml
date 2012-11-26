@@ -19,7 +19,7 @@
                     <p:menuitem value="Publicar" action="#{manterAvaliacao.publicar}" rendered="#{sessao.admin and (manterAvaliacao.entidade.situacao.pendente || manterAvaliacao.entidade.situacao.edicao)}"/>
                     <p:menuitem value="Enviar" action="#{manterAvaliacao.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterAvaliacao.entidade.situacao.edicao}"/>
                     <p:menuitem value="Editar" onclick="cadastroAvaliacao.show()"/>
-                    <p:menuitem value="Excluir" action="#{manterAvaliacao.remove}"/>
+                    <p:menuitem value="Excluir" onclick="telaConfirmacao.show()"/>
                 </p:contextMenu>
             </h:form>
             
@@ -34,6 +34,9 @@
                     </ui:repeat>
                 </center>
             </h:form>
+            
+        
+            
             
         </f:view>
         <ui:include src="/modals/cadastroAvaliacao.xhtml"/>

@@ -19,7 +19,7 @@
                     <p:menuitem value="Publicar" action="#{manterFamilia.publicar}" rendered="#{sessao.admin and (manterFamilia.entidade.situacao.pendente || manterFamilia.entidade.situacao.edicao)}"/>
                     <p:menuitem value="Enviar" action="#{manterFamilia.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterFamilia.entidade.situacao.edicao}"/>
                     <p:menuitem value="Editar" onclick="cadastroFamilia.show()" />
-                    <p:menuitem value="Excluir" action="#{manterFamilia.remove}"/>
+                    <p:menuitem value="Excluir" onclick="telaConfirmacao.show()"/>
                     <p:menuitem value="Adicionar espécie" oncomplete="cadastroEspecie.show()"/>
                 </p:contextMenu>
             </h:form>
@@ -49,6 +49,15 @@
                     </ui:repeat>
                 </center>
             </h:form>
+            
+             <p:dialog modal="true" header="Tela de confirmaçao" widgetVar="telaConfirmacao" resizable="true" minWidth="600">
+        <h:form enctype="multipart/form-data">
+            <h:outputText value="Essa operaçao de exclusao e irreversivel. &nbsp; Voce tem certeza que deseja fazer isso?" />
+                    <p:commandButton action="#{manterFamilia.remove}" value="Sim" onsuccess="telaConfirmacao.hide()"/>
+                    <p:commandButton onclick="telaConfirmacao.hide()" value="Nao" immediate="true"/>
+        </h:form>
+    </p:dialog>
+            
         </f:view>
         <ui:include src="/modals/cadastroFamilia.xhtml"/>
         <ui:include src="/modals/cadastroEspecie.xhtml"/>
