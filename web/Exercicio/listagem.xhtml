@@ -221,8 +221,10 @@
                     
                     <h:panelGroup rendered="#{(sessao.admin || sessao.monitor || sessao.aluno) and listagemView.mostraEdicao}">
                         <ui:repeat value="#{listagemView.exerciciosEmEdicaoLetra}" var="exercicio">
-                            <h:link outcome="/Exercicio/perfil.xhtml" title="Em edição" style="color: #000000;">
-                                <h:outputText value="#{exercicio.titulo}"/>
+                            <h:link outcome="/Exercicio/perfil.xhtml" title="#{exercicio.pergunta}" style="color: #000000;">
+                                <h:outputText value="#{exercicio.visao}&nbsp;"/>
+                                <h:outputText value="&ndash; &nbsp;#{exercicio.elemento}&nbsp;"/>                    
+                                <h:outputText value="&ndash; &nbsp;#{exercicio.titulo}"/>
                                 <f:param name="codigo" value="#{exercicio.id}"/>
                             </h:link><br/>
                         </ui:repeat><br/><br/>
@@ -233,8 +235,10 @@
                     <h:panelGroup rendered="#{(sessao.admin || sessao.monitor || sessao.aluno ) and listagemView.mostraPendente}">
                         
                         <ui:repeat value="#{listagemView.exerciciosPendentesLetra}" var="exercicio">
-                            <h:link outcome="/Exercicio/perfil.xhtml" title="Não publicada" style="color: #FF0000;">
-                                <h:outputText value="#{exercicio.titulo}"/>
+                            <h:link outcome="/Exercicio/perfil.xhtml" title="#{exercicio.pergunta}" style="color: #FF0000;">
+                                <h:outputText value="#{exercicio.visao}&nbsp;"/>
+                                <h:outputText value="&ndash; &nbsp;#{exercicio.elemento}&nbsp;"/>                    
+                                <h:outputText value="&ndash; &nbsp;#{exercicio.titulo}"/>
                                 <f:param name="codigo" value="#{exercicio.id}"/>
                             </h:link><br/>
                         </ui:repeat><br/><br/>
@@ -245,8 +249,10 @@
                         <h:panelGroup rendered="#{listagemView.mostraPublicados}" >
                     
                     <ui:repeat value="#{listagemView.exerciciosPublicadosLetra}" var="exercicio">
-                        <h:link outcome="/Exercicio/perfil.xhtml" title="Clique para ver a descrição completa deste exercício" style="color: #FFFFFF;">
-                            <h:outputText value="#{exercicio.titulo}"/>
+                        <h:link outcome="/Exercicio/perfil.xhtml" title="#{exercicio.pergunta}" style="color: #FFFFFF;">                           
+                            <h:outputText value="#{exercicio.visao}&nbsp;"/>
+                                <h:outputText value="&ndash; &nbsp;#{exercicio.elemento}&nbsp;"/>                    
+                                <h:outputText value="&ndash; &nbsp;#{exercicio.titulo}"/>
                             <f:param name="codigo" value="#{exercicio.id}"/>
                         </h:link><br/>
                     </ui:repeat>

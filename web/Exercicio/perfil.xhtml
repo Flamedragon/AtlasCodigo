@@ -19,15 +19,15 @@
                 <p:contextMenu rendered="#{sessao.admin || sessao.monitor}">
                     <p:menuitem value="Publicar" action="#{manterExercicio.publicar}" rendered="#{sessao.admin and (manterExercicio.entidade.situacao.pendente || manterExercicio.entidade.situacao.edicao)}"/>
                     <p:menuitem value="Enviar" action="#{manterExercicio.envia}" rendered="#{(sessao.admin or sessao.monitor) and manterExercicio.entidade.situacao.edicao}"/>
-                    <p:menuitem value="Editar" onclick="cadastroExercicio.show()" update="formExercicios"/>
+                    <p:menuitem value="Editar" onclick="cadastroExercicio.show()" update=":formExercicios"/>
                     <p:menuitem value="Excluir" onclick="telaConfirmacao.show()"/>
                     <p:menuitem value="Adicionar Resposta" oncomplete="cadastroResposta.show()" />
                     <p:menuitem value="Adicionar à avaliação:" oncomplete="adicionarAvaliacao.show()"/>
-                    <p:menuitem value="Editar Resposta Selecionada" action="#{manterResposta.busca(manterExercicio.respostaEscolhida)}" oncomplete="editaResposta.show()" update="formExercicios"/>
+                    <p:menuitem value="Editar Resposta Selecionada" action="#{manterResposta.busca(manterExercicio.respostaEscolhida)}" oncomplete="editaResposta.show()" update=":formExercicios"/>
                     <p:menuitem value="Remover Resposta Selecionada" action="#{manterResposta.remove(manterExercicio.respostaEscolhida)}"/>
                 </p:contextMenu>
                 
-      
+          </h:form>
             
                 <h:form id="formExercicios">
             <h1 align="center" id="Exnome">
@@ -55,7 +55,7 @@
                
             </h:selectOneRadio> 
             
-            </h:form>
+        
             <br/><br/>
             <p:commandButton id="submitButton" value="Responder" update="growl" action="#{manterRespostaAluno.salva(sessao.usuario)}"/>
             

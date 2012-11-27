@@ -72,9 +72,11 @@ public class ManterRespostaAluno extends CRUDView<RespostaAluno, Integer>{
         
         getEntidade().setUsuario(user);
         if(r.isFlCorreta()){
-            getEntidade().getExercicio().setQtCorretas((byte)(getEntidade().getExercicio().getQtCorretas() + 1));
+            e.setQtCorretas((byte)(e.getQtCorretas() + 1));
+            exercicioDAO.edit(e);
             ServiceUtil.addInfoMessage("Parabéns!!", getEntidade().getResposta().getJustificativa());
-        } else {getEntidade().getExercicio().setQtIncorretas((byte)(getEntidade().getExercicio().getQtIncorretas() + 1));
+        } else {e.setQtIncorretas((byte)(e.getQtIncorretas() + 1));
+            exercicioDAO.edit(e);
             ServiceUtil.addInfoMessage("A resposta dada está incorreta", getEntidade().getResposta().getJustificativa());
         }
         if(getEntidade().getId() == null) super.salva();
